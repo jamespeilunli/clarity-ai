@@ -1,0 +1,322 @@
+/* Add your CSS here */
+:root {
+    --bg-color: #201E43;
+    --card-color: #134B70;
+    --title-color: #EEEEEE;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    margin: 0px;
+    overflow: hidden;
+    padding: 0px;
+    position: relative;
+    background: var(--bg-color);
+}
+
+.title-wrapper {
+    position: relative;
+    height: 100px;
+    width: 50%;
+}
+
+.title {
+    color: var(--title-color);
+    font-family: "Rubik", sans-serif;
+    font-size: 2.5em;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fall 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes fall {
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 916px;
+    width: calc(100% - 20px);
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center; /* Center the cards vertically */
+    z-index: 1;
+}
+
+#cards:hover > .card::after {
+    opacity: 1;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    height: 260px;
+    flex-direction: column;
+    position: relative;
+    width: 300px;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::before,
+.card::after {
+    border-radius: inherit;
+    content: "";
+    height: 100%;
+    left: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    transition: opacity 500ms;
+    width: 100%;
+}
+
+.card::before {
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    z-index: 3;
+}
+
+.card::after {
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.4),
+        transparent 40%
+    );
+    z-index: 1;
+}
+
+.card > .card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    inset: 1px;
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
+}
+
+h1, h2, h3, h4, span {
+    color: var(--title-color);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0px;
+}
+
+i {
+    color: var(--title-color);
+}
+
+.card-image {
+    align-items: center;
+    display: flex;
+    height: 140px;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-image > i {
+    font-size: 6em;
+    opacity: 0.25;
+}
+
+.card-info-wrapper {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding: 0px 20px;
+}
+
+.card-info {
+    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+}
+
+.card-info > i {
+    font-size: 1em;
+    height: 20px;
+    line-height: 20px;
+}
+
+.card-info-title > h3 {
+    font-size: 1.1em;
+    line-height: 20px;
+}
+
+.card-info-title > h4 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85em;
+    margin-top: 8px;
+}
+
+@media(max-width: 1000px) {
+    body {
+        align-items: flex-start;
+        overflow: auto;
+    }
+
+    #cards {
+        max-width: 1000px;
+        padding: 10px 0px;
+    }
+
+    .card {
+        flex-shrink: 1;
+        width: calc(50% - 4px);
+    }
+}
+
+@media(max-width: 500px) {
+    .card {
+        height: 180px;
+    }
+
+    .card-image {
+        height: 80px;
+    }
+
+    .card-image > i {
+        font-size: 3em;
+    }
+
+    .card-info-wrapper {
+        padding: 0px 10px;
+    }
+
+    .card-info > i {
+        font-size: 0.8em;
+    }
+
+    .card-info-title > h3 {
+        font-size: 0.9em;
+    }
+
+    .card-info-title > h4 {
+        font-size: 0.8em;
+        margin-top: 4px;
+    }
+}
+
+@media(max-width: 320px) {
+    .card {
+        width: 100%;
+    }
+}
+
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%); /* Start from below the viewport */
+    background-color: var(--card-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    animation: slideUp 0.5s forwards; /* Animation to slide up and fade in */
+}
+
+@keyframes slideUp {
+    to {
+        transform: translate(-50%, -50%); /* End at the center of the viewport */
+        opacity: 1;
+    }
+}
+
+form h3 {
+    margin-bottom: 10px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--title-color);
+    box-sizing: border-box; /* Ensure padding is included in the width */
+
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--title-color);
+    color: var(--bg-color);
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: rgba(255, 255, 255);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--title-color);
+    font-size: 1.5em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#percentage-display {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--card-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    text-align: center;
+}
+
+#percentage {
+    color: var(--title-color);
+    font-size: 3em;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth movement */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Move the card up by 10px on hover */
+}
+
+.card:hover::before {
+    opacity: 1;
+}

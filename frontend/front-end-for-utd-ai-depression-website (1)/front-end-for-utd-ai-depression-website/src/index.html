@@ -1,0 +1,55 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Depression Analysis</title>
+    <div class="gradient"></div>
+    <div class="title-wrapper">
+        <h1 class="title">got depression?</h1>
+    </div>
+    <div id="cards">
+        <div class="card" onclick="showForm('Account Handle')">
+            <div class="card-content">
+                <div class="card-image">
+                    <i class="fa fa-at"></i>
+                </div>
+                <div class="card-info-wrapper">
+                    <div class="card-info">
+                        <i class="fa fa-at"></i>
+                        <div class="card-info-title">
+                            <h3>Account Handle</h3>
+                            <h4>which account should we look at?</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card" onclick="showForm('Single Post')">
+            <div class="card-content">
+                <div class="card-image">
+                    <i class="fa fa-image"></i>
+                </div>
+                <div class="card-info-wrapper">
+                    <div class="card-info">
+                        <i class="fa fa-image"></i>
+                        <div class="card-info-title">
+                            <h3>Single Post</h3>
+                            <h4>A single post for us to analyze</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="form-container" class="form-container" style="display: none;">
+        <button class="close-btn" onclick="closeForm()">×</button>
+        <form id="input-form" onsubmit="handleSubmit(event)">
+            <h3 id="form-title"></h3>
+            <input type="text" id="user-input" name="user-input" placeholder="Enter your input" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="percentage-display" style="display: none;">
+        <h2 id="percentage">0%</h2>
+    </div>
+    <script src="scripts.js"></script>
