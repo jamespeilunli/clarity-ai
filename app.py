@@ -6,15 +6,21 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/add')
+@app.route('/api/add')
 def data():
     a = int(request.args.get('a'))
     b = int(request.args.get('b'))
-    return f"{a} + {b} = {a+b}"
 
-@app.route('/api/hello')
-def hello():
-    return jsonify(message="Hello from Flask!")
+    response = jsonify({
+        "recieved": {
+            "a": a,
+            "b": b,
+        },
+        "message": f"{a} + {b} = {a+b}",
+    })
+    response.status_code = 200
+
+    return response
 
 if __name__ == '__main__':
     app.run()
