@@ -1,19 +1,4 @@
 # Vitrum AI
 
-WIP
-
-project for the UTD 2024 summer AI workshop
-
-## Tech Stack
-* Frontend
-  * HTML + CSS + JS
-* Backend
-  * Flask?
-  * Vercel?
-  * Transformer NLP Model
-
-## Installation
-
-## Usage
-
-## Contributing
+this is the code for the mastodon web-scraper
+(in form of a ipynb file)
