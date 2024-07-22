@@ -1,6 +1,6 @@
-**Front-end for UTD AI Depression Website**
+## Frontend
 
-This project is a front-end implementation for the UTD AI Depression website, developed to provide an engaging user interface for detecting depression using AI. The site features interactive elements and a visually appealing design to enhance user experience.
+The site features interactive elements and a visually appealing design to enhance user experience.
 
 *Live Demo*
 Check out the live demo on CodePen: UTD AI Depression Website (https://codepen.io/ab1324/pen/zYVryPO)
@@ -41,7 +41,3 @@ CSS3
 JavaScript
 Font Awesome (https://fontawesome.com/)
 Google Fonts (https://fonts.google.com/)
-
-
-License
-This project is licensed under the MIT License. See the LICENSE file for more details.
