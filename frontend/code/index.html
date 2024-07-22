@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Front-end for UTD AI depression website</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<div id="percentage-screen" class="percentage-screen" style="display: none;">
+    <h2 id="percentage-text">0%</h2>
+</div>
+<div class="header">
+    <button class="contact-btn" onclick="window.location.href='https://github.com/jamespeilunli/utd-summer-ai'">
+        <span class="glow"></span>
+        <span class="contact-btn-content">Contact Us</span>
+    </button>
+    <div class="spotlight">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<canvas id="particleCanvas"></canvas>
+<div class="accent-lines">
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<div class="heroSubP">
+    <p>Do you think they have</p>
+</div>
+<div class="hero">
+    <div class="heroT">
+        <h2>Depression?</h2>
+        <h2>Depression?</h2>
+    </div>
+</div>
+<p class="heroP">Detect it with <span class="magic">
+    <span class="magic-star">
+      <svg viewBox="0 0 512 512">
+      <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+      </svg>
+    </span>
+    <span class="magic-star">
+      <svg viewBox="0 0 512 512">
+      <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+      </svg>
+    </span>
+    <span class="magic-star">
+      <svg viewBox="0 0 512 512">
+      <path d="M512 255.1c0 11.34-7.406 20.86-18.44 23.64l-171.3 42.78l-42.78 171.1C276.7 504.6 267.2 512 255.9 512s-20.84-7.406-23.62-18.44l-42.66-171.2L18.47 279.6C7.406 276.8 0 267.3 0 255.1c0-11.34 7.406-20.83 18.44-23.61l171.2-42.78l42.78-171.1C235.2 7.406 244.7 0 256 0s20.84 7.406 23.62 18.44l42.78 171.2l171.2 42.78C504.6 235.2 512 244.6 512 255.1z" />
+      </svg>
+    </span>
+    <span class="magic-text">AI</span>
+  </span>.</p>
+<div class="mountains">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="hero-spacer"></div>
+<div class="content-section">
+    <!-- HTML -->
+<div id="cards">
+    <div class="card" data-title="Account Handle" onclick="redirectToForm('Account Handle')">
+        <div class="card-content">
+            <div class="card-image">
+                <i class="fa fa-at"></i>
+            </div>
+            <div class="card-info-wrapper">
+                <div class="card-info">
+                    <i class="fa fa-at"></i>
+                    <div class="card-info-title">
+                        <h3>Account Handle</h3>
+                        <h4>which account should we look at?</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card" data-title="Single Post" onclick="redirectToForm('Single Post')">
+        <div class="card-content">
+            <div class="card-image">
+                <i class="fa fa-image"></i>
+            </div>
+            <div class="card-info-wrapper">
+                <div class="card-info">
+                    <i class="fa fa-image"></i>
+                    <div class="card-info-title">
+                        <h3>Single Post</h3>
+                        <h4>A single post for us to analyze</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="form-container" class="form-container" style="display: none;">
+        <form id="input-form" onsubmit="handleSubmit(event)">
+            <h3 id="form-title"></h3>
+            <input type="text" id="user-input" name="user-input" placeholder="Enter your input" required>
+            <button type="submit" class="button-border">Submit</button>
+        </form>
+    </div>
+    <!-- HTML for percentage display -->
+    <div id="percentage-display" style="display: none;">
+        <h2 id="percentage">0%</h2>
+        <div id="graph-container"></div>
+        <p class="static-text">This percentage represents the sentiment analysis result.</p>
+    </div>
+
+</div>
+<div class="content-section">
+    <div class="content-acc">
+        <div></div>
+        <div></div>
+    </div>
+    <p class="subt">Sentiment analysis with AI</p>
+    <h3 class="title">Understand your<br> Emotions.</h3>
+    <p class="subp">At the core lies our revolutionary framework, <br>ensuring adaptability across all application architectures.</p>
+</div>
+<script src="scripts.js"></script>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
