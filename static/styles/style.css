@@ -980,7 +980,7 @@ form input:hover {
   cursor: pointer;
 }
 
-#percentage-display {
+#percentage-screen {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -993,7 +993,7 @@ form input:hover {
   text-align: center;
 }
 
-#percentage {
+#percentage-text {
   color: var(--title-color);
   font-size: 3em;
 }

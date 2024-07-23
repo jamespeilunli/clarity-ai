@@ -3,39 +3,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const formContainer = document.getElementById("form-container");
   const inputForm = document.getElementById("input-form");
-  const percentageScreen = document.getElementById("percentage-screen");
-  const percentageText = document.getElementById("percentage-text");
-
-  function redirectToForm(title) {
-    const formTitle = document.getElementById("form-title");
-    formTitle.textContent = title;
-    formContainer.style.display = "block";
-    formContainer.style.animation = "slideUp 0.5s forwards";
-    document.body.classList.add("blur");
-  }
 
   inputForm.addEventListener("submit", handleSubmit);
-
-  // JavaScript to handle the backend output
-  function displayPercentageAndGraph(percentage, graph) {
-    const percentageScreen = document.getElementById("percentage-screen");
-    const percentageText = document.getElementById("percentage-text");
-    const graphContainer = document.getElementById("graph-container");
-
-    percentageScreen.style.display = "flex";
-    let currentPercentage = 0;
-    const interval = setInterval(() => {
-      if (currentPercentage < percentage) {
-        currentPercentage++;
-        percentageText.textContent = currentPercentage + "%";
-      } else {
-        clearInterval(interval);
-      }
-    }, 20);
-
-    // Assuming `graph` is the HTML or SVG content for the graph
-    graphContainer.innerHTML = graph;
-  }
 });
 
 function handleSubmit(event) {
