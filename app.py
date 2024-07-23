@@ -10,8 +10,11 @@ def index():
 def model():
     data = request.get_json()
     user_input = data["input"]
+    input_type = data["inputType"]
+
+    # handle input based on input type here
     
-    return jsonify({'message': f'Data "{user_input}" received successfully'})
+    return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully'})
 
 @app.route('/api/add')
 def data():

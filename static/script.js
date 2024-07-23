@@ -41,14 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
 function handleSubmit(event) {
   event.preventDefault();
   const userInput = document.getElementById("user-input").value;
+  const inputType = document.getElementById("form-title").innerText;
   console.log("User Input:", userInput);
+  console.log("Input Type:", inputType);
 
   fetch("/model", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ input: userInput })
+    body: JSON.stringify({
+      input: userInput,
+      inputType: inputType
+    })
   })
     .then((response) => response.json())
     .then((data) => {
@@ -79,11 +84,12 @@ function displayPercentage(percentage) {
 }
 
 function showForm(title) {
-  console.log("JS WORKS!");
   const formContainer = document.getElementById("form-container");
   const formTitle = document.getElementById("form-title");
+  const formInput = document.getElementById("user-input");
   formTitle.textContent = title;
   formContainer.style.display = "block";
+  formInput.value = "";
   document.body.classList.add("blur");
 }
 
