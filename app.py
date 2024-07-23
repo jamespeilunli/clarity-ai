@@ -6,6 +6,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/output-display')
+def output_display():
+    return render_template('output_display.html')
+
 @app.route('/model', methods=["POST"])
 def model():
     data = request.get_json()
