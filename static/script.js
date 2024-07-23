@@ -16,29 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   inputForm.addEventListener("submit", handleSubmit);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const userInput = document.getElementById("user-input").value;
-    console.log("User Input:", userInput);
-
-    fetch("your-backend-endpoint", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ input: userInput })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        displayPercentageAndGraph(data.percentage, data.graph);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        closeForm();
-      });
-  }
-
   // JavaScript to handle the backend output
   function displayPercentageAndGraph(percentage, graph) {
     const percentageScreen = document.getElementById("percentage-screen");
@@ -66,7 +43,7 @@ function handleSubmit(event) {
   const userInput = document.getElementById("user-input").value;
   console.log("User Input:", userInput);
 
-  fetch("your-backend-endpoint", {
+  fetch("/model", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -102,6 +79,7 @@ function displayPercentage(percentage) {
 }
 
 function showForm(title) {
+  console.log("JS WORKS!");
   const formContainer = document.getElementById("form-container");
   const formTitle = document.getElementById("form-title");
   formTitle.textContent = title;
