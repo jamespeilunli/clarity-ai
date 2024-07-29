@@ -11,9 +11,16 @@ function handleSubmit(event) {
   event.preventDefault();
   const userInput = document.getElementById("user-input").value;
   const inputType = document.getElementById("form-title").innerText;
-  console.log("User Input:", userInput);
-  console.log("Input Type:", inputType);
+  localStorage.setItem('inputData',  JSON.stringify({
+    input: userInput,
+    inputType: inputType
+  }));
 
+  console.log("0 User Input:", userInput);
+  console.log("0 Input Type:", inputType);
+  window.location.href = '/output-display';
+
+  /*
   fetch("/model", {
     method: "POST",
     headers: {
@@ -28,28 +35,12 @@ function handleSubmit(event) {
     .then((data) => {
       console.log("Success:", data);
       closeForm();
-      displayPercentage(data.percentage);
     })
     .catch((error) => {
       console.error("Error:", error);
       closeForm();
     });
-}
-
-function displayPercentage(percentage) {
-  const percentageScreen = document.getElementById("percentage-screen");
-  const percentageText = document.getElementById("percentage-text");
-  percentageScreen.style.display = "flex";
-
-  let currentPercentage = 0;
-  const interval = setInterval(() => {
-    if (currentPercentage < percentage) {
-      currentPercentage++;
-      percentageText.textContent = currentPercentage + "%";
-    } else {
-      clearInterval(interval);
-    }
-  }, 20);
+    */
 }
 
 function showForm(title) {

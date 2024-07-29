@@ -18,7 +18,7 @@ def model():
 
     # handle input based on input type here
     
-    return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully'})
+    return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully', 'percentage': 42})
 
 @app.route('/api/add')
 def data():
