@@ -6,12 +6,18 @@ from mastodon import Mastodon
 load_dotenv()
 MASTODON_EMAIL = os.getenv('MASTODON_EMAIL')
 MASTODON_PASSWORD = os.getenv('MASTODON_PASSWORD')
+client_id = os.getenv('MASTODON_CLIENT_ID')
+client_secret = os.getenv('MASTODON_CLIENT_SECRET')
 
-client_id, client_secret = Mastodon.create_app(
-    'pytooterapp', # should probably change these names sometime...
-    api_base_url='https://mastodon.social',
-    to_file=None
-)
+if not client_id or not client_secret:
+    client_id, client_secret = Mastodon.create_app(
+        'pytooterapp', # should probably change these names sometime...
+        api_base_url='https://mastodon.social',
+        to_file=None
+    )
+    print("Server owner: please set the environment variables MASTODON_CLIENT_ID and MASTODON_CLIENT_SECRET in Vercel!")
+    print("To access them, go to the source code and print out `client_id` and `client_secret` right where these print statements are")
+    quit()
 
 # Log in
 mastodon = Mastodon(
