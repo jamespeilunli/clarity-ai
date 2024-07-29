@@ -7,19 +7,21 @@ load_dotenv()
 MASTODON_EMAIL = os.getenv('MASTODON_EMAIL')
 MASTODON_PASSWORD = os.getenv('MASTODON_PASSWORD')
 
-# Run this once
-Mastodon.create_app(
+client_id, client_secret = Mastodon.create_app(
     'pytooterapp', # should probably change these names sometime...
     api_base_url='https://mastodon.social',
-    to_file='pytooter_clientcred.secret'
+    to_file=None
 )
 
-# Uncomment the code below to log in and save the user credentials (run this once)
-mastodon = Mastodon(client_id='pytooter_clientcred.secret')
-mastodon.log_in(
+# Log in
+mastodon = Mastodon(
+    client_id=client_id,
+    client_secret=client_secret,
+    api_base_url='https://mastodon.social'
+)
+access_token = mastodon.log_in(
     MASTODON_EMAIL,
     MASTODON_PASSWORD,
-    to_file='pytooter_usercred.secret'
 )
 
 # Function to format username
@@ -39,10 +41,11 @@ def clean_post(text):
         if inner_text.startswith('#') or inner_text.startswith('@'):
             return inner_text
         return href
-    text_with_hrefs = href_pattern.sub(replace_with_href, text)
+    clean_text = href_pattern.sub(replace_with_href, text)
     
-    text_with_newlines = re.sub(r'</p>\s*<p>', '\n', text_with_hrefs) # Preserve <p> tags as newlines
-    clean_text = re.sub(r'<[^>]+>', ' ', text_with_newlines) # Replace all other HTML tags with spaces
+    clean_text = re.sub(r'</p>\s*<p>', '\n', clean_text) # Preserve <p> tags as newlines
+    clean_text = re.sub(r'</span>\s*<span>', ' ', clean_text) # Preserve <span> tags as spaces
+    clean_text = re.sub(r'<[^>]+>', '', clean_text) # Remove all other HTML tags
     clean_text = clean_text.strip() # Remove leading and trailing whitespace
     clean_text = clean_text.replace("&#39;", "'").replace("&quot;", '"') # Replace weird formatting
 
@@ -50,7 +53,7 @@ def clean_post(text):
 
 # Function to fetch recent posts
 def fetch_recent_posts(username, num_posts=20):
-    mastodon = Mastodon(access_token='pytooter_usercred.secret')
+    mastodon = Mastodon(access_token=access_token, api_base_url="https://mastodon.social")
 
     # Extract user handle
     user_handle = username.strip('@').split('@')[0]
