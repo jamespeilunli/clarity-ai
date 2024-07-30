@@ -59,7 +59,7 @@ def clean_post(text):
     return clean_text
 
 # Function to fetch recent posts
-def fetch_recent_posts(username, num_posts=20):
+def fetch_recent_posts(username, num_posts=60):
     mastodon = Mastodon(access_token=access_token, api_base_url="https://mastodon.social")
 
     # Extract user handle

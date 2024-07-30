@@ -48,14 +48,14 @@
   cursor: pointer;
 }
 .slice:nth-child(1) {
-  --stroke-color: #d72e2c;
+  --stroke-color: #509d55;
   --rotate: calc(36deg * (1 - 1));
 }
 .slice:nth-child(1) .fa-regular {
   --emo-rotate: calc(-36deg * (1 - 1));
 }
 .slice:nth-child(2) {
-  --stroke-color: #ff6259;
+  --stroke-color: #68ca6f;
   --rotate: calc(36deg * (2 - 1));
 }
 .slice:nth-child(2) .fa-regular {
@@ -69,14 +69,14 @@
   --emo-rotate: calc(-36deg * (3 - 1));
 }
 .slice:nth-child(4) {
-  --stroke-color: #68ca6f;
+  --stroke-color: #ff6259;
   --rotate: calc(36deg * (4 - 1));
 }
 .slice:nth-child(4) .fa-regular {
   --emo-rotate: calc(-36deg * (4 - 1));
 }
 .slice:nth-child(5) {
-  --stroke-color: #509d55;
+  --stroke-color: #d72e2c;
   --rotate: calc(36deg * (5 - 1));
 }
 .slice:nth-child(5) .fa-regular {
