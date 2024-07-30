@@ -7,7 +7,10 @@
   box-sizing: border-box;
   animation: 1s animateRating linear;
 }
-.graph-container *, .graph-container *::before, .graph-container *::after {
+
+.graph-container *,
+.graph-container *::before,
+.graph-container *::after {
   box-sizing: border-box;
 }
 
@@ -34,6 +37,7 @@
   background: rgba(0, 0, 0, 0);
   transform: rotate(calc(var(--rotate)));
 }
+
 .slice .fa-regular {
   font-size: 2rem;
   color: #000;
@@ -43,42 +47,53 @@
   --emo-rotate: 90deg;
   transform: rotate(var(--emo-rotate));
 }
+
 .slice:hover {
   opacity: 0.8;
   cursor: pointer;
 }
+
 .slice:nth-child(1) {
-  --stroke-color: #d72e2c;
+  --stroke-color: #509d55;
   --rotate: calc(36deg * (1 - 1));
 }
+
 .slice:nth-child(1) .fa-regular {
   --emo-rotate: calc(-36deg * (1 - 1));
 }
+
 .slice:nth-child(2) {
-  --stroke-color: #ff6259;
+  --stroke-color: #68ca6f;
   --rotate: calc(36deg * (2 - 1));
 }
+
 .slice:nth-child(2) .fa-regular {
   --emo-rotate: calc(-36deg * (2 - 1));
 }
+
 .slice:nth-child(3) {
   --stroke-color: #f19c4b;
   --rotate: calc(36deg * (3 - 1));
 }
+
 .slice:nth-child(3) .fa-regular {
   --emo-rotate: calc(-36deg * (3 - 1));
 }
+
 .slice:nth-child(4) {
-  --stroke-color: #68ca6f;
+  --stroke-color: #ff6259;
   --rotate: calc(36deg * (4 - 1));
 }
+
 .slice:nth-child(4) .fa-regular {
   --emo-rotate: calc(-36deg * (4 - 1));
 }
+
 .slice:nth-child(5) {
-  --stroke-color: #509d55;
+  --stroke-color: #d72e2c;
   --rotate: calc(36deg * (5 - 1));
 }
+
 .slice:nth-child(5) .fa-regular {
   --emo-rotate: calc(-36deg * (5 - 1));
 }
@@ -99,7 +114,9 @@
   transform: translate(-50%, 50%) rotate(var(--turn));
   transform-origin: 50% 50%;
   transition: 0.2s linear;
+  filter: drop-shadow(calc(var(--round-size) / -10) 0 0.2rem rgba(0, 0, 0, 0.5333333333));
 }
+
 .marker::before {
   content: "";
   position: absolute;
@@ -109,7 +126,6 @@
   bottom: 0;
   transform: translate(-100%, 50%) rotate(-45deg);
   transform-origin: 100% 50%;
-  filter: drop-shadow(calc(var(--round-size) / -10) 0 0.2rem rgba(0, 0, 0, 0.5333333333));
 }
 
 .percentage-display {
@@ -119,7 +135,8 @@
   transform: translateX(-50%);
   font-size: 3rem;
   color: #000;
-  font-family: "Varela Round"; /* Using Google Font */
+  font-family: "Varela Round";
+  /* Using Google Font */
 }
 
 @keyframes animateRating {
@@ -127,6 +144,7 @@
     --rating: 5;
   }
 }
+
 body {
   background: #262638;
   display: flex;
@@ -149,9 +167,11 @@ body {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
