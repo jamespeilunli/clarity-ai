@@ -2,4 +2,4 @@ Flask==3.0.3
 Mastodon.py==1.8.1
 python-dotenv==1.0.1
 transformers==4.42.4
-torch==2.3.1+cu118
+torch==2.3.1
