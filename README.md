@@ -1,4 +1,4 @@
-# utd-summer-ai
+# Vitrum AI
 
 WIP
 
