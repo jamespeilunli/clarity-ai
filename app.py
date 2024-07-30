@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template, request
 from fetch_posts import fetch_recent_posts
+from multi_post_model import get_depression_score
 
 app = Flask(__name__)
 
@@ -7,9 +8,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/output-display')
+@app.route('/results')
 def output_display():
-    return render_template('output_display.html')
+    return render_template('results.html')
 
 @app.route('/model', methods=["POST"])
 def model():
@@ -19,8 +20,9 @@ def model():
 
     if input_type == "Account Handle":
         mastodon_posts = fetch_recent_posts(user_input, 10)
+        depression_score = get_depression_score(mastodon_posts)
     
-    return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully. Posts: {mastodon_posts}', 'percentage': 42})
+    return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully.', 'Posts': mastodon_posts, 'percentage': depression_score})
 
 @app.route('/api/add')
 def data():

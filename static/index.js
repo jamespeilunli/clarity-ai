@@ -18,7 +18,7 @@ function handleSubmit(event) {
 
   console.log("0 User Input:", userInput);
   console.log("0 Input Type:", inputType);
-  window.location.href = '/output-display';
+  window.location.href = '/results';
 
   /*
   fetch("/model", {
