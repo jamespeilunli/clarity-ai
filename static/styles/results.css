@@ -11,6 +11,22 @@
   box-sizing: border-box;
 }
 
+
+:root {
+  --primary-color: #8e4cff;
+  --secondary-color: #35a7ff;
+  --accent-color: #fff;
+  --background-text-color: #38618c;
+  --highlight-color: #38618c;
+  --background-color: #d6efff;
+  --card-color: #fff;
+  --text-light: #35a7ff;
+  --color-1: #38618c;
+  --title-color: var(--highlight-color);
+  --text-color: var(--secondary-color);
+  --header-color: #0f0605;
+}
+
 .half-donut {
   width: var(--size);
   height: calc(var(--size) / 2);
@@ -112,6 +128,34 @@
   filter: drop-shadow(calc(var(--round-size) / -10) 0 0.2rem rgba(0, 0, 0, 0.5333333333));
 }
 
+
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: var(--header-color);
+  padding: 2em;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(-1em);
+
+  animation: load 2s ease-in 2s forwards, up 1.4s ease-out 2s forwards;
+}
+
+
+
+@property --p {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
 .percentage-display {
   position: absolute;
   bottom: -5rem;
@@ -136,6 +180,7 @@ body {
   margin: 0;
   height: 100vh;
   gap: 5rem;
+  z-index: 0;
 }
 
 body {
@@ -143,6 +188,7 @@ body {
   background-size: 4000% 4000%;
   animation: gradient 15s ease infinite;
   height: 100vh;
+  z-index: 0;
 }
 
 @keyframes gradient {
@@ -155,4 +201,46 @@ body {
   100% {
     background-position: 0% 50%;
   }
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.single_page {
+  font-family: "Hubot-Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 3em;
+  color: var(--secondary-color);
+  background: linear-gradient(90deg, var(--background-text-color), var(--primary-color));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  animation: gradient-animation 5s ease infinite;
+}
+
+/* Paragraph styling within single_page */
+.single_page p {
+  font-size: 0.5em;
+}
+
+/* Status box styling */
+.status {
+  position: absolute;  /* Positioning element absolutely */
+  top: 10px;           /* Distance from the top of the page */
+  right: 10px;         /* Distance from the right side of the page */
+  padding: 10px;       /* Optional: Padding inside the status box */
+  border-radius: 5px;  /* Optional: Rounded corners for the status box */
+  display: none;
 }

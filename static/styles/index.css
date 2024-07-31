@@ -1134,3 +1134,13 @@ button.contact-btn,
 .subt {
     color: var(--background-text-color);
 }
+
+
+  .no-scroll {
+    overflow: hidden;
+  }
+  .no-scroll {
+    overflow: hidden;
+  }
+
+

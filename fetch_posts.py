@@ -16,7 +16,7 @@ if not client_id or not client_secret:
         api_base_url='https://mastodon.social',
         to_file=None
     )
-    print("Server owner: please set the environment variables MASTODON_CLIENT_ID and MASTODON_CLIENT_SECRET in Vercel!")
+    print("Server owner: please set the environment variables MASTODON_CLIENT_ID and MASTODON_CLIENT_SECRET!")
     print("To access them, go to the source code and print out `client_id` and `client_secret` right where these print statements are")
     quit()
 

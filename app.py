@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 from fetch_posts import fetch_recent_posts
+from pyngrok import ngrok, conf
+import os
 import multi_post
 import single_post 
 
@@ -38,7 +40,7 @@ def data():
     b = int(request.args.get('b'))
 
     response = jsonify({
-        "recieved": {
+        "received": {
             "a": a,
             "b": b,
         },
@@ -49,4 +51,15 @@ def data():
     return response
 
 if __name__ == '__main__':
+    # Set ngrok auth token
+    conf.get_default().auth_token = os.environ.get("NGROK_AUTH_TOKEN")
+    
+    # Ensure no other ngrok sessions are running
+    os.system("killall ngrok")
+    
+    # Start ngrok when the Flask app starts
+    public_url = ngrok.connect(5000)
+    print(" * ngrok tunnel \"{}\" -> \"http://127.0.0.1:5000\"".format(public_url))
+    
+    # Start the Flask app
     app.run(debug=True)

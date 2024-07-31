@@ -51,12 +51,16 @@ function showForm(title) {
   formContainer.style.display = "block";
   formInput.value = "";
   document.body.classList.add("blur");
+  document.body.classList.add("no-scroll");
+
 }
 
 function closeForm() {
   const formContainer = document.getElementById("form-container");
   formContainer.style.display = "none";
   document.body.classList.remove("blur");
+  document.body.classList.remove("no-scroll");
+
   canShowForm = false;
   setTimeout(() => {
     canShowForm = true;
