@@ -1,64 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const status = document.getElementById("status");
-    status.innerText = "Computing...";
-    // Select the elements where the percentage and graph are displayed
-    const percentageDisplay = document.querySelector('.percentage-display');
-    const graphContainer = document.querySelector('.graph-container');
-    const sadPage = document.querySelector('.sad-page');
-    const happyPage = document.querySelector('.happy-page'); // Ensure this element is defined
-    // Hide all elements initially
-    sadPage.style.display = 'none';
-    happyPage.style.display = 'none';
-    percentageDisplay.style.display = 'block';
-    graphContainer.style.display = 'block';
+const statusElement = document.getElementById("status");
 
-    let inputData = localStorage.getItem("inputData");
-    if (!inputData) throw new Error("input data is null"); // add error handling later
+let inputData = localStorage.getItem("inputData");
+if (!inputData) throw new Error("input data is null"); // add error handling later
 
-    fetch("/model", {
-        method: "POST",
-        headers: {
+fetch("/model", {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json"
-        },
-        body: inputData,
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        status.innerText = "Done!";
-        console.log("Success:", data);
-        displayPercentage(parseInt(data.percentage, 10));
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
+    },
+    body: inputData,
+})
+.then((response) => response.json())
+.then((data) => {
+    statusElement.innerText = "Done!";
+    console.log("Success:", data);
+    displayOutput(parseInt(data.percentage, 10));
+})
+.catch((error) => {
+    console.error("Error:", error);
 });
-function displayPercentage(percentage) {
+
+function displayOutput(percentage) {
     // Select the elements where the percentage and graph are displayed
     const percentageDisplay = document.querySelector('.percentage-display');
     const graphContainer = document.querySelector('.graph-container');
     const sadPage = document.querySelector('.sad-page');
-    const happyPage = document.querySelector('.happy-page'); // Ensure this element is defined
-    // Hide all elements initially
-    sadPage.style.display = 'none';
-    happyPage.style.display = 'none';
-    percentageDisplay.style.display = 'block';
-    graphContainer.style.display = 'blcok';
+    const happyPage = document.querySelector('.happy-page');
+
     let inputType = JSON.parse(localStorage.getItem('inputData')).inputType;
-
     console.log(inputType);
-    if (inputType === "Single Post"){
-        // Handle non "Account Handle" inputType
 
-        percentageDisplay.style.display = 'none';
-        graphContainer.style.display = 'none';
+    if (inputType === "Single Post") {
         if (percentage > 50) {
             sadPage.style.display = 'block';
         } else {
-            happyPage.style.display = 'block'; // Ensure happy page element is defined
+            happyPage.style.display = 'block';
         }
-    }
-
-    if (inputType === "Account Handle") {
+    } if (inputType === "Account Handle") {
         // Initialize the current percentage and animation parameters
         let currentPercentage = 0;
         const duration = 2000; // Duration of the animation in milliseconds
@@ -83,7 +61,7 @@ function displayPercentage(percentage) {
                 graphContainer.style.setProperty('--rating', currentPercentage / 20);
             }
         }, interval);
-    } 
-    
-}
+    }
 
+    statusElement.style.display = "none";
+}

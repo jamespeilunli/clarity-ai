@@ -219,6 +219,7 @@ button.contact-btn:hover .glow::before {
         rotate: 0deg;
         scale: 0;
     }
+
     100% {
         scale: 1;
     }
@@ -229,22 +230,27 @@ button.contact-btn:hover .glow::before {
         transform: rotateZ(0deg) scale(1);
         filter: blur(15px) opacity(0.5);
     }
+
     20% {
         transform: rotateZ(-1deg) scale(1.2);
         filter: blur(16px) opacity(0.6);
     }
+
     40% {
         transform: rotateZ(2deg) scale(1.3);
         filter: blur(14px) opacity(0.4);
     }
+
     60% {
         transform: rotateZ(-2deg) scale(1.2);
         filter: blur(15px) opacity(0.6);
     }
+
     80% {
         transform: rotateZ(1deg) scale(1.1);
         filter: blur(13px) opacity(0.4);
     }
+
     100% {
         transform: rotateZ(0deg) scale(1);
         filter: blur(15px) opacity(0.5);
@@ -277,7 +283,8 @@ canvas#particleCanvas {
     opacity: 0;
     color: var(--primary-color);
     animation: load 2s ease-in-out 0.6s forwards;
-    z-index: 3; /* Make sure this is on top */
+    z-index: 3;
+    /* Make sure this is on top */
 }
 
 @property --p {
@@ -367,9 +374,11 @@ canvas#particleCanvas {
         opacity: 0;
         transform: scale(0) rotate(360deg);
     }
+
     50% {
         transform: scale(0);
     }
+
     100% {
         opacity: 0.12;
         transform: scale(1) rotate(0deg);
@@ -381,9 +390,11 @@ canvas#particleCanvas {
         opacity: 0;
         transform: scale(0) rotate(-360deg);
     }
+
     50% {
         transform: scale(0);
     }
+
     100% {
         opacity: 0.12;
         transform: scale(1) rotate(0deg);
@@ -549,20 +560,16 @@ canvas#particleCanvas {
 }
 
 .card::before {
-    background: radial-gradient(
-        800px circle at var(--mouse-x) var(--mouse-y),
-        rgba(8, 204, 255, 0.1),
-        transparent 40%
-    );
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(8, 204, 255, 0.1),
+            transparent 40%);
     z-index: 3;
 }
 
 .card::after {
-    background: radial-gradient(
-        600px circle at var(--mouse-x) var(--mouse-y),
-        var(--title-color),
-        transparent 40%
-    );
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+            var(--title-color),
+            transparent 40%);
     z-index: 1;
 }
 
@@ -735,9 +742,11 @@ form input:hover {
     0% {
         --p: 0%;
     }
+
     50% {
         --p: 300%;
     }
+
     100% {
         --p: 300%;
     }
@@ -747,9 +756,11 @@ form input:hover {
     0% {
         background-color: var(--background-color);
     }
+
     50% {
         background-color: #1a1e2b;
     }
+
     100% {
         background-color: var(--background-color);
     }
@@ -759,9 +770,11 @@ form input:hover {
     0% {
         color: var(--secondary-color);
     }
+
     50% {
         color: #bad1f1;
     }
+
     100% {
         color: var(--secondary-color);
     }
@@ -771,16 +784,19 @@ form input:hover {
     from {
         background-position: 0% center;
     }
+
     to {
         background-position: -200% center;
     }
 }
 
 @keyframes scale {
+
     from,
     to {
         transform: scale(0);
     }
+
     50% {
         transform: scale(1);
     }
@@ -790,6 +806,7 @@ form input:hover {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(180deg);
     }
@@ -869,8 +886,7 @@ body {
     font-family: Untitled Sans, system-ui, -apple-system, BlinkMacSystemFont,
         Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue,
         sans-serif;
-    background: var(--background-color)
-        linear-gradient(0deg, rgba(248, 236, 216, 0.06), rgba(239, 192, 152, 0.06));
+    background: var(--background-color) linear-gradient(0deg, rgba(248, 236, 216, 0.06), rgba(239, 192, 152, 0.06));
     font-size: max(calc(var(--_size) * 0.03), 10px);
     --_factor: min(600px, 80vh);
     --_size: min(var(--_factor), 80vw);
@@ -903,13 +919,11 @@ button.contact-btn,
     font-size: 7em;
     font-weight: 600;
     color: var(--secondary-color);
-    background: radial-gradient(
-        2em 2em at 50% 50%,
-        transparent calc(var(--p) - 2em),
-        var(--secondary-color) calc(var(--p) - 1em),
-        var(--secondary-color) calc(var(--p) - 0.4em),
-        transparent var(--p)
-        ),
+    background: radial-gradient(2em 2em at 50% 50%,
+            transparent calc(var(--p) - 2em),
+            var(--secondary-color) calc(var(--p) - 1em),
+            var(--secondary-color) calc(var(--p) - 0.4em),
+            transparent var(--p)),
         linear-gradient(0deg, var(--primary-color) 30%, var(--secondary-color) 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -929,15 +943,13 @@ button.contact-btn,
     font-size: 7em;
     font-weight: 600;
     color: var(--secondary-color);
-    background: radial-gradient(
-        2em 2em at 50% 50%,
-        transparent calc(var(--p) - 2em),
-        transparent calc(var(--p) - 1em),
-        #fff calc(var(--p) - 1em),
-        #fff calc(var(--p) - 0.4em),
-        transparent calc(var(--p) - 0.4em),
-        transparent var(--p)
-    );
+    background: radial-gradient(2em 2em at 50% 50%,
+            transparent calc(var(--p) - 2em),
+            transparent calc(var(--p) - 1em),
+            #fff calc(var(--p) - 1em),
+            #fff calc(var(--p) - 0.4em),
+            transparent calc(var(--p) - 0.4em),
+            transparent var(--p));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -954,6 +966,7 @@ button.contact-btn,
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 0.7;
     }
@@ -963,6 +976,7 @@ button.contact-btn,
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 0.3;
     }
@@ -1123,9 +1137,11 @@ button.contact-btn,
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -1136,11 +1152,10 @@ button.contact-btn,
 }
 
 
-  .no-scroll {
+.no-scroll {
     overflow: hidden;
-  }
-  .no-scroll {
+}
+
+.no-scroll {
     overflow: hidden;
-  }
-
-
+}
