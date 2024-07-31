@@ -58,6 +58,8 @@ def returnScore(input):
     input_ids = encoded_review['input_ids'].to(device)
     attention_mask = encoded_review['attention_mask'].to(device)
 
+    print("encoding done on input", input)
+
     output = model(input_ids, attention_mask)
     _, prediction = torch.max(output, dim=1)
 

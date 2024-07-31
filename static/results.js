@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let inputData = localStorage.getItem("inputData");
     if (!inputData) throw new Error("input data is null"); // add error handling later
 
+    console.log(`fetching with input data ${inputData}...`)
+
     fetch("/model", {
         method: "POST",
         headers: {
