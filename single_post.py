@@ -46,6 +46,7 @@ model.load_state_dict(test)
 model = model.to(device)
 
 def returnScore(input):
+    print("returnScore called with param input==", input, flush=True)
     encoded_review = tokenizer.encode_plus(
         input,
         max_length=MAX_LEN,
@@ -58,12 +59,11 @@ def returnScore(input):
     input_ids = encoded_review['input_ids'].to(device)
     attention_mask = encoded_review['attention_mask'].to(device)
 
-    print("encoding done on input", input)
+    print("encoding done on input", input, flush=True)
 
     output = model(input_ids, attention_mask)
     _, prediction = torch.max(output, dim=1)
 
-    print(input)
-    print(f'Sentiment  : {output[0][0]}')
+    print(f'Sentiment  : {output[0][0]}', flush=True)
 
     return float(output[0][0])

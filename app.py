@@ -18,12 +18,15 @@ def model():
     data = request.get_json()
     user_input = data["input"]
     input_type = data["inputType"]
+    print("/model called, input", user_input, input_type, flush=True)
 
     if input_type == "Account Handle":
+        print("account handle", flush=True)
         mastodon_posts = fetch_recent_posts(user_input, 60)
         depression_score = multi_post.returnScore(mastodon_posts) * 100
         return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully.', 'Posts': mastodon_posts, 'percentage': depression_score})
     elif input_type == "Single Post":
+        print("single post", flush=True)
         depression_score = single_post.returnScore(user_input) * 100
         return jsonify({'percentage': depression_score})
 
