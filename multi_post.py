@@ -6,7 +6,6 @@ from torch import nn
 # Random seed for reproducibilty
 RANDOM_SEED = 42
 torch.manual_seed(RANDOM_SEED)
-torch.cuda.empty_cache()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -64,7 +63,7 @@ class SentimentClassifier(nn.Module):
     
 
 model = SentimentClassifier(len(['not depressed', 'depressed']))
-model.load_state_dict(torch.load("multi_post_model.pt", map_location=torch.device('cuda')))
+model.load_state_dict(torch.load("multi_post_model.pt", map_location=device))
 model = model.to(device)
 
 
