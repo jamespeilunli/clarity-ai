@@ -1,0 +1,5 @@
+previewsEnabled: true
+services:
+  - type: web
+    plan: starter
+    env: python
