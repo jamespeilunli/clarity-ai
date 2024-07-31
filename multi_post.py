@@ -64,7 +64,7 @@ class SentimentClassifier(nn.Module):
     
 
 model = SentimentClassifier(len(['not depressed', 'depressed']))
-model.load_state_dict(torch.load("best_multi_tweet_model.pt", map_location=torch.device('cuda')))
+model.load_state_dict(torch.load("multi_post_model.pt", map_location=torch.device('cuda')))
 model = model.to(device)
 
 
