@@ -13,7 +13,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class_names = ['not depressed', 'depressed']
 
 # Set the model name
-MODEL_NAME = 'bert-base-cased'
+MODEL_NAME = 'prajjwal1/bert-tiny'
 
 # Build a BERT based tokenizer
 tokenizer = BertTokenizer.from_pretrained(MODEL_NAME, force_download=True)
