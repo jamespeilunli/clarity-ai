@@ -14,6 +14,7 @@
     box-sizing: border-box;
 }
 
+
 :root {
     --primary-color: #8e4cff;
     --secondary-color: #35a7ff;
@@ -163,6 +164,8 @@
     animation: load 2s ease-in 2s forwards, up 1.4s ease-out 2s forwards;
 }
 
+
+
 @property --p {
     syntax: "<percentage>";
     inherits: false;
@@ -262,5 +265,44 @@ body {
     right: 10px;
     padding: 10px;
     border-radius: 5px;
-    font-family: "Hubot-Sans", sans-serif;
+    /* Optional: Rounded corners for the status box */
+}
+
+.button-container {
+    text-align: center;
+    /* Center the button */
+    margin-top: 20px;
+    /* Add some space above the button */
+}
+
+.button-container button {
+    background-color: var(--background-text-color);
+    /* Green background */
+    color: var(--background-color);
+    /* White text */
+    padding: 15px 32px;
+    /* Padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Inline-block display */
+    font-size: 16px;
+    /* Font size */
+    margin: 4px 2px;
+    /* Margin */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    border: none;
+    /* Remove border */
+    border-radius: 100px;
+    /* Rounded corners */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color */
+}
+
+.button-container button:hover {
+    background-color: var(--secondary-color);
+    /* Darker green on hover */
 }

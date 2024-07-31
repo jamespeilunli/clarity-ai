@@ -60,7 +60,7 @@ h2 {
 }
 
 p {
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin: 0;
     padding: 0;
 }
@@ -81,94 +81,93 @@ p {
     animation: load 2s ease-in 2s forwards, up 1.4s ease-out 2s forwards;
 }
 
-button.contact-btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8em;
-    height: 2.4em;
+.contact-btn {
     cursor: pointer;
-    border-radius: 20em;
-    border: 1px solid #c2ccff33;
-    padding-top: 0.3em;
-    background: var(--background-color);
-    color: var(--secondary-color);
-    white-space: nowrap;
-    transition: background 0.5s, transform 0.5s;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--accent-color);
+    background-color: #62abff;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-button.contact-btn::before {
-    content: "";
-    display: block;
-    position: absolute;
+.contact-btn:hover {
+    background-color: var(--background-text-color);
+    transform: scale(1.05);
+}
+
+.contact-btn:active {
+    background-color: var(--background-text-color);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 500;
     left: 0;
+    text-decoration: none;
     top: 0;
-    border-radius: 20em;
     width: 100%;
     height: 100%;
-    background: #c2ccff91 radial-gradient(farthest-side at 50% 100%, #c2ccff, transparent);
-    opacity: 0.1;
-    transition: all 0.4s ease-in-out;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    color: var(--background-text-color);
 }
 
-button.contact-btn:hover::before {
-    background: #c2ccff1e radial-gradient(farthest-side at 50% 100%, #c2ccff, transparent);
-    opacity: 0.3;
-    background: var(--highlight-color) radial-gradient(farthest-side at 50% 100%, var(--highlight-color), transparent);
+.modal-content h1 {
+    color: var(--background-text-color);
 }
 
-.contact-btn .glow {
-    --border-width: 1px;
-    --loop-cycle: 24s;
-    position: absolute;
-    inset: calc(var(--border-width) * -1);
-    border-radius: 50px;
-    border: var(--border-width) solid transparent;
-    -webkit-mask: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
-    mask: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
-    -webkit-mask-clip: padding-box, border-box;
-    mask-clip: padding-box, border-box;
-    -webkit-mask-composite: source-in, xor;
-    mask-composite: intersect;
-    pointer-events: none;
+.modal-content p {
+    color: var(--background-text-color);
 }
 
-button.contact-btn:hover .glow {
-    --loop-cycle: 2s;
+.modal-content {
+    top: 50%;
+
+    text-align: center;
+    background-color: var(--background-color);
+    margin: 10% auto;
+    /* Adjusted margin for larger size */
+    color: var(--background-text-color);
+    padding: 30px;
+    /* Increased padding for larger size */
+    border: 1px solid #888;
+    border-radius: 10px;
+    /* Increased border-radius for larger size */
+    width: 70%;
+    /* Increased width for larger size */
+    height: 30%;
+    transition: all 0.3s ease;
 }
 
-.contact-btn .glow::after,
-.contact-btn .glow::before {
-    content: "";
-    height: 100%;
-    offset-anchor: 100% 50%;
-    background: radial-gradient(circle at 50% 50%, hsla(0, 0%, 100%, 0.75), transparent 50%), radial-gradient(circle at 50% 50%, #c2ccff 50%, transparent);
-    opacity: 0.4;
-    offset-path: rect(0 100% 100% 0 round 33px);
-    position: absolute;
-    display: inline-block;
-    -webkit-animation: loop 4s linear infinite;
-    animation: loop var(--loop-cycle) linear infinite;
-    aspect-ratio: 1 / 1;
-    transition: opacity 1s ease-in-out;
+.close {
+    color: var(--text-light);
+    float: right;
+    font-size: 32px;
+    /* Increased font size for better visibility */
+    font-weight: bold;
+    text-decoration: none;
+    /* Remove underline */
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Added transitions */
 }
 
-.contact-btn .glow::before {
-    animation-delay: calc(var(--loop-cycle) / -2);
+.close:hover,
+.close:focus {
+    color: var(--background-text-color);
+    cursor: pointer;
+    transform: scale(1.1);
+    /* Added scale transform on hover */
 }
 
-@keyframes loop {
-    100% {
-        offset-distance: 100%;
-    }
-}
-
-.contact-btn-content {
-    background: linear-gradient(0deg, var(--text-light), var(--background-text-color));
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.2em;
-    line-height: 142%;
+/* Prevent scrolling on body */
+.no-scroll {
+    overflow: hidden;
 }
 
 button.contact-btn:hover .glow::after,

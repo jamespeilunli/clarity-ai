@@ -75,4 +75,5 @@ function displayOutput(percentage) {
     }
 
     statusElement.innerText = "";
+    console.log(statusElement)
 }

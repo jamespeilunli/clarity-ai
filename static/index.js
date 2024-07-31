@@ -49,3 +49,24 @@ function closeForm() {
 // Magic star animation
 let index = 0,
     interval = 1000;
+
+
+  // Function to show the modal
+function showModal() {
+  document.querySelector('.modal').style.display = 'block';
+  document.body.classList.add('no-scroll');
+}
+
+// Function to hide the modal
+function hideModal() {
+  document.querySelector('.modal').style.display = 'none';
+  document.body.classList.remove('no-scroll');
+}
+
+// Example event listeners
+document.querySelector('.close').addEventListener('click', hideModal);
+window.addEventListener('click', function(event) {
+  if (event.target.classList.contains('modal')) {
+      hideModal();
+  }
+});

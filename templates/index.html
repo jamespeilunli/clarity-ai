@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>AI Depression Classification</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css')}}">
+    <title>Clarity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
 </head>
 
 <body>
@@ -12,49 +12,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <div class="fPage">
 
-        <div class="header">
+        <title>Contact Popup</title>
 
-            <button class="contact-btn">
-                <span class="glow"></span>
-                <span class="contact-btn-content">Contact Us</span>
-            </button>
+        <body>
+            <div class="header">
+                <span class="contact-btn-content"></span>
+                <a class="contact-btn" onclick="showModal()">
+                    <span class="glow"></span>
+                    Contact Us
+                </a>
+            </div>
 
-            <div class="spotlight">
-                <div></div>
-                <div></div>
-                <div></div>
+            <!-- The Modal -->
+            <div id="contactModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <h1>Contact<br></h1>
+                    <p class="modal-text">Visit the <a
+                            href="https://github.com/jamespeilunli/utd-summer-ai" target="_blank">GitHub repository</a></p>
+                    <p class="modal-text">Send us an email: <a
+                            href="mailto:ishaantmajumdar@gmail.com">ishaantmajumdar@gmail.com</a></p>
+                </div>
             </div>
-        </div>
+        </body>
 
-        <canvas id="particleCanvas"></canvas>
 
-        <div class="accent-lines">
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+        <div class="spotlight">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        <div class="heroSubP">
-            <p>Need </p>
-        </div>
-        <div class="hero">
-            <div class="heroT">
-                <h2>Clarity?</h2>
-                <h2>Clarity?</h2>
-            </div>
-        </div>
-        <p class="heroP">AI sees the signs you might miss.
-        </p>
     </div>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="accent-lines">
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="heroSubP">
+        <p>Need </p>
+    </div>
+    <div class="hero">
+        <div class="heroT">
+            <h2>Clarity?</h2>
+            <h2>Clarity?</h2>
+        </div>
+    </div>
+    <p class="heroP">AI sees the signs you might miss.
+    </p>
     </div>
     <div class="hero-spacer"></div>
 
@@ -99,7 +116,9 @@
             <form id="input-form">
                 <h3 id="form-title"></h3>
                 <input type="text" id="user-input" name="user-input" placeholder="Enter your input" required>
+
                 <button type="submit" class="button-border">Submit</button>
+
             </form>
         </div>
     </div>
@@ -113,11 +132,14 @@
         <h3 class="title"> AI understands.
         </h3>
         <p class="subp">Our technology identifies patterns in your posts to offer insights into your mental health. Let
-            us help you understand your emotions and find support.</p>
+            us
+            help you understand your emotions and find support.</p>
     </div>
 
     </div>
     <!-- partial -->
-    <script src="{{ url_for('static',filename='index.js') }}"> </script>
+    <script src="{{ url_for('static',filename='index.js') }}"></script>
+
 </body>
+
 </html>
