@@ -33,6 +33,7 @@ access_token = mastodon.log_in(
 
 # Function to format username
 def format_username(username):
+    username = username.strip()
     if not username.startswith('@'):
         username = '@' + username
     if not username.endswith('@mastodon.social'):
@@ -60,6 +61,8 @@ def clean_post(text):
 
 # Function to fetch recent posts
 def fetch_recent_posts(username, num_posts=60):
+    username = format_username(username)
+
     mastodon = Mastodon(access_token=access_token, api_base_url="https://mastodon.social")
 
     # Extract user handle
@@ -68,8 +71,7 @@ def fetch_recent_posts(username, num_posts=60):
     # Search for the user account
     accounts = mastodon.account_search(user_handle)
     if not accounts:
-        print(f"Error: User {username} not found.")
-        return []
+        raise ValueError(f"User {username} not found.")
 
     user_id = accounts[0]['id']
 

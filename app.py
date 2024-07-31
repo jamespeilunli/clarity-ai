@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, Response
 from fetch_posts import fetch_recent_posts
 from pyngrok import ngrok, conf
 import os
@@ -22,17 +22,21 @@ def model():
     input_type = data["inputType"]
     print("/model called, input", user_input, input_type, flush=True)
 
-    if input_type == "Account Handle":
-        print("account handle", flush=True)
-        mastodon_posts = fetch_recent_posts(user_input, 60)
-        depression_score = multi_post.returnScore(mastodon_posts) * 100
-        return jsonify({'message': f'Data "{user_input}" of type "{input_type}" received successfully.', 'Posts': mastodon_posts, 'percentage': depression_score})
-    elif input_type == "Single Post":
-        print("single post", flush=True)
-        depression_score = single_post.returnScore(user_input) * 100
-        return jsonify({'percentage': depression_score})
-
-    return jsonify({'message': 'Error', 'percentage': 'Error'})
+    try:
+        if input_type == "Account Handle":
+            print("account handle", flush=True)
+            mastodon_posts = fetch_recent_posts(user_input, 60)
+            depression_score = multi_post.returnScore(mastodon_posts) * 100
+            return {"message": "Success!", "input": data, "posts": mastodon_posts, "percentage": depression_score}, 200
+        elif input_type == "Single Post":
+            print("single post", flush=True)
+            depression_score = single_post.returnScore(user_input) * 100
+            return {"message": "Success!", "input": data, "percentage": depression_score}, 200
+        else:
+            return "invalid input type", 400
+    except Exception as e:
+        print("OMSDFS", e)
+        return e, 500
 
 @app.route('/api/add')
 def data():

@@ -1,7 +1,10 @@
 const statusElement = document.getElementById("status");
 
 let inputData = localStorage.getItem("inputData");
-if (!inputData) throw new Error("input data is null"); // add error handling later
+if (!inputData) {
+    statusElement.innerText = "Error: input data is null";
+    throw new Error("input data is null");
+}
 
 fetch("/model", {
     method: "POST",
@@ -10,15 +13,23 @@ fetch("/model", {
     },
     body: inputData,
 })
-.then((response) => response.json())
-.then((data) => {
-    statusElement.innerText = "Done!";
-    console.log("Success:", data);
-    displayOutput(parseInt(data.percentage, 10));
-})
-.catch((error) => {
-    console.error("Error:", error);
-});
+    .then((response) => {
+        if (!response.ok) {
+            return response.text().then((text) => { throw new Error(text) });
+        }
+        else {
+            return response.json();
+        }
+    })
+    .then((data) => {
+        statusElement.innerText = "Done!";
+        console.log("Success:", data);
+        displayOutput(parseInt(data.percentage, 10));
+    })
+    .catch((error) => {
+        statusElement.innerText = error;
+        throw new Error(error);
+    });
 
 function displayOutput(percentage) {
     // Select the elements where the percentage and graph are displayed
@@ -63,5 +74,5 @@ function displayOutput(percentage) {
         }, interval);
     }
 
-    statusElement.style.display = "none";
+    statusElement.innerText = "";
 }
