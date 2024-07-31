@@ -14,7 +14,6 @@
     box-sizing: border-box;
 }
 
-
 :root {
     --primary-color: #8e4cff;
     --secondary-color: #35a7ff;
@@ -144,8 +143,6 @@
     filter: drop-shadow(calc(var(--round-size) / -10) 0 0.2rem rgba(0, 0, 0, 0.5333333333));
 }
 
-
-
 .header {
     display: flex;
     width: 100%;
@@ -163,8 +160,6 @@
 
     animation: load 2s ease-in 2s forwards, up 1.4s ease-out 2s forwards;
 }
-
-
 
 @property --p {
     syntax: "<percentage>";
@@ -305,4 +300,14 @@ body {
 .button-container button:hover {
     background-color: var(--secondary-color);
     /* Darker green on hover */
+}
+
+.disclaimer {
+    font-size: 1em;
+    font-family: sans-serif;
+    margin: 1em;
+    padding: 0;
+    position : absolute;
+    left: 0;
+    bottom: 0;
 }
