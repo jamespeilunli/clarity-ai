@@ -40,6 +40,11 @@ def format_username(username):
         username = username + '@mastodon.social'
     return username
 
+def is_valid_username(username):
+    # Check if the username matches a valid pattern
+    # Assume valid usernames contain only letters, numbers, underscores, or periods
+    return re.match(r'^[a-zA-Z0-9_.]+$', username) is not None
+
 def clean_post(text):
     # Extract href links from <a> tags, except preserve hastags and mentions
     href_pattern = re.compile(r'<a\s+[^>]*?href="([^"]*?)"[^>]*?>(.*?)</a>', re.IGNORECASE)
@@ -68,8 +73,12 @@ def fetch_recent_posts(username, num_posts=60):
     # Extract user handle
     user_handle = username.strip('@').split('@')[0]
 
+    if not is_valid_username(user_handle):
+        raise ValueError(f"Invalid username format.")
+
     # Search for the user account
     accounts = mastodon.account_search(user_handle)
+    print(user_handle, accounts)
     if not accounts:
         raise ValueError(f"User {username} not found.")
 

@@ -36,7 +36,7 @@ def model():
             return "invalid input type", 400
     except Exception as e:
         print("OMSDFS", e)
-        return e, 500
+        return str(e), 500
 
 @app.route('/api/add')
 def data():
@@ -66,4 +66,4 @@ if __name__ == '__main__':
     print(" * ngrok tunnel \"{}\" -> \"http://127.0.0.1:5000\"".format(public_url))
     
     # Start the Flask app
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
