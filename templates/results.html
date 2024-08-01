@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,26 @@
     <link href="https://fonts.googleapis.com/css?family=Varela Round" rel="stylesheet"> <!-- Google Font -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <p id="status"></p>
-    <div class="graph-container">
+    <p id="status" class="status">Computing...</p>
+
+    <div class="sad-page" style="display: none;">
+        <div class="single_page">
+            <h2>We believe you might be depressed</h1>
+                <p>Remember, it's okay to not be okay. If you feel like you are struggling, find support, share your
+                    feelings, and take the time you need to heal.</p>
+        </div>
+    </div>
+    <div class="happy-page" style="display: none;">
+        <div class="single_page">
+            <h2>We believe you are not depressed</h2>
+            <p>Your post suggests a stable or positive mental state. Keep taking care of yourself
+                and stay mindful of your well-being!</p>
+        </div>
+    </div>
+
+    <div class="graph-container" style="display: none;">
         <div class="half-donut">
             <div class="slice"><i class="fa-regular fa-face-grin-hearts"></i></div>
             <div class="slice"><i class="fa-regular fa-face-smile"></i></div>
@@ -21,6 +39,13 @@
         <div class="marker"></div>
         <div class="percentage-display">0%</div>
     </div>
+
+    <div class="button-container">
+        <button onclick="location.href='/'">Go Back</button>
+    </div>
+
+    <p class="disclaimer">DISCLAIMER: The output of this AI model is for informational purposes only and does not provide medical advice or diagnosis. Always consult a qualified healthcare provider for any concerns regarding mental health.</p>
+
     <script src="../static/results.js"></script>
 </body>
 </html>
