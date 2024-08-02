@@ -62,5 +62,7 @@ The project was inspired by and built using concepts from the following resource
 
 ## Code Structure
 
+bert test 3 uses the extended dataset as defined in the datasets branch
+
 ## Contributing
 
