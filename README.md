@@ -1,8 +1,8 @@
 # Claritas AI
 
 WIP
-
-project for the UTD 2024 summer AI workshop
+**PLACED 1st out of 30 teams for the UTD 2024 summer AI internship/workshop**
+project for the UTD 2024 summer AI internship/workshop
 
 ## Tech Stack
 * Deployment
@@ -60,7 +60,7 @@ The project was inspired by and built using concepts from the following resource
 
 *Responsive Layout*: Ensures a consistent experience across different devices and screen sizes.
 
-## Code Structure
-
+## Research Paper
+https://docs.google.com/document/d/1SFoNFnl0oVKxUKS3FH8rKBJN73elFlpQ/edit?usp=sharing&ouid=117610108974435331088&rtpof=true&sd=true
 ## Contributing
-
+Aryan Bhattacharya, Daniel Hoffmaster, Peilun Li, Kyle Liu, Ishaant Majumdar, John Tad Tolbert
