@@ -1,4 +1,4 @@
-# Vitrum AI
+# Claritas AI
 
 WIP
 
