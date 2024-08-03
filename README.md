@@ -88,7 +88,3 @@ The project was inspired by and built using concepts from the following resource
 *Stylish Design*: Utilizes modern design principles and animations to create a visually appealing interface.
 
 *Responsive Layout*: Ensures a consistent experience across different devices and screen sizes.
-
-
-
-
