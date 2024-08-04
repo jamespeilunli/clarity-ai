@@ -6,7 +6,7 @@ This natural language processing AI/ML project leverages sentiment analysis to d
 
 We deploy our project as a Flask web app using ngrok (permanent url may be provided soon).
 
-Our team of six high schoolers developed this as our project for the 2024 UTD Deep Dive AI Workshop. Our project placed first out of the 30 teams attending the workshop!
+Our team of six high schoolers developed this as our project for the 2024 summer UTD Deep Dive AI Workshop. Our project placed first out of the 30 teams attending the workshop!
 
 **DISCLAIMER:** The output of our AI model is for informational purposes only and does not provide medical advice or diagnosis. Always consult a qualified healthcare provider for any concerns regarding mental health.
 
