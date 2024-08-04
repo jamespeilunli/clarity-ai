@@ -65,7 +65,7 @@ Make sure you have ngrok installed: [download page](https://ngrok.com/download)
 
 * for multiple social media posts (stored in `multi_post_model.pt`): a pre-trained BERT model named TinyBert ([bert-tiny](https://huggingface.co/prajjwal1/bert-tiny)) processes each tweet into a size 128 vector.  The output of the BERTs processing each tweet is partitioned into multiple sections. Each of these sections is put through an LSTM where each timestamp takes the vector output of the BERT for one tweet as input. The output is then condensed into a single value through a small neural network. This value is then put through a sigmoid function to get one percentage for the depression value. `multi_post.py` tokenizes each post in a list of posts then performs inference on the tokens with this model. 
 
-Check out the `model` branch and its corresponding PR to see our parsed datasets as well as our many model experiments (e.g. with different architectures, models, hyperparameters, accuracy optimizations, efficiency optimizations)!
+**Check out the `model` branch** and its corresponding PR to see our parsed datasets as well as our many model experiments (e.g. with different architectures, models, hyperparameters, accuracy optimizations, efficiency optimizations)!
 
 ### Backend - Social Media Post Retrieval
 
