@@ -33,7 +33,6 @@ Aryan Bhattacharya, Daniel Hoffmaster, Peilun Li, Kyle Liu, Ishaant Majumdar, Jo
 
 Write a `.env`:
 ```
-NGROK_AUTH_TOKEN=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 MASTODON_EMAIL=XXXXXXXXXXXXXXXXXXXXX
 MASTODON_PASSWORD=XXXXXXXXXXXXXXXXXXXXX
 MASTODON_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -45,17 +44,24 @@ Install dependencies: `pip3 install -r requirements.txt`
 ### Local Development
 
 ```bash
-export FLASK_ENV=development
-export FLASK_DEBUG=1
-flask run # go to the linked local server this gives you
+python3 app.py
 ```
+
 The local server should automatically update on reload when you make changes to the code.
 
 ### Web Deployment
 
 Make sure you have ngrok installed: [download page](https://ngrok.com/download)
 
-`python3 app.py`
+```bash
+# start gunicorn WSGI local server
+gunicorn -b 127.0.0.1:5000 app:app
+```
+in a new terminal:
+```bash
+# deploy port 5000 to ngrok
+ngrok http 5000
+```
 
 ## Code Specifics
 
