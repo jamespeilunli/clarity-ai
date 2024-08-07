@@ -84,11 +84,21 @@ def fetch_recent_posts(username, num_posts=60):
 
     user_id = accounts[0]['id']
 
-    # Fetch recent posts
-    posts = mastodon.account_statuses(user_id, limit=num_posts)
-    recent_posts = [clean_post(post['content']) for post in posts if post['content'] != ""]
+    posts = []
+    max_id = None
+    while len(posts) < num_posts:
+        fetched_posts = mastodon.account_statuses(user_id, limit=40, max_id=max_id) # Mastodon API gives you maximum of 40 posts per page
+        if not fetched_posts:
+            break
 
-    return recent_posts
+        posts.extend([post for post in fetched_posts if post['content'] != ""]) # Filter posts with non-empty content
+
+        max_id = fetched_posts[-1]['id'] - 1 # Update max_id for pagination
+
+    # Apply clean_post and return the exact number of posts needed
+    cleaned_posts = [clean_post(post['content']) for post in posts[:num_posts]]
+
+    return cleaned_posts
 
 if __name__ == "__main__":
     username = input("Enter the Mastodon username: ")
