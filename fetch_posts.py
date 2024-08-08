@@ -85,7 +85,9 @@ def get_user_id(username_input):
 
     mastodon = Mastodon(access_token=access_token, api_base_url=f"https://mastodon.social")
 
-    accounts = mastodon.account_search(username, limit=1)
+    print(username, instance)
+    accounts = mastodon.account_search(username)
+    print(accounts)
     for account in accounts:
         if account.acct == username or account.acct == f"{username}@{instance}":
             return account["id"]
