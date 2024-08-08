@@ -8,7 +8,6 @@ MASTODON_EMAIL = os.environ.get('MASTODON_EMAIL')
 MASTODON_PASSWORD = os.environ.get('MASTODON_PASSWORD')
 client_id = os.environ.get('MASTODON_CLIENT_ID')
 client_secret = os.environ.get('MASTODON_CLIENT_SECRET')
-print(type(MASTODON_EMAIL), type(MASTODON_PASSWORD), type(client_id), type(client_secret))
 
 if not client_id or not client_secret:
     client_id, client_secret = Mastodon.create_app(
@@ -20,7 +19,7 @@ if not client_id or not client_secret:
     print("To access them, go to the source code and print out `client_id` and `client_secret` right where these print statements are")
     quit()
 
-# Log in
+# Retrieve access token
 mastodon = Mastodon(
     client_id=client_id,
     client_secret=client_secret,
@@ -31,19 +30,32 @@ access_token = mastodon.log_in(
     MASTODON_PASSWORD,
 )
 
-# Function to format username
-def format_username(username):
-    username = username.strip()
-    if not username.startswith('@'):
-        username = '@' + username
-    if not username.endswith('@mastodon.social'):
-        username = username + '@mastodon.social'
-    return username
-
 def is_valid_username(username):
-    # Check if the username matches a valid pattern
-    # Assume valid usernames contain only letters, numbers, underscores, or periods
-    return re.match(r'^[a-zA-Z0-9_.]+$', username) is not None
+    return re.match(r'^[a-zA-Z0-9_. ]+$', username) is not None
+def is_valid_instance(instance):
+    return re.match(r'^[\w-]+(?:\.[\w-]+)+\/?$', instance) is not None
+
+def extract_user_info(username_input):
+    """
+    Extracts username as well as Mastodon instance from a username input.
+
+    Valid inputs:
+    "username" (instance defaults to mastodon.social)
+    "@username" (instance defaults to mastodon.social)
+    "@username@instance.social"
+    "username@instance.social"
+    """
+
+    username_input = username_input.strip()
+    if not username_input.startswith("@"):
+        username_input = "@" + username_input
+    parts = username_input.split("@")
+    if len(parts) == 2:
+        return parts[1], "mastodon.social"
+    elif len(parts) == 3:
+        return parts[1], parts[2]
+    else:
+        raise ValueError("Invalid username format.")
 
 def clean_post(text):
     # Extract href links from <a> tags, except preserve hastags and mentions
@@ -64,25 +76,23 @@ def clean_post(text):
 
     return clean_text
 
-# Function to fetch recent posts
-def fetch_recent_posts(username, num_posts=60):
-    username = format_username(username)
+def get_user_id(username_input):
+    username, instance = extract_user_info(username_input)
+    if not is_valid_username(username):
+        raise ValueError(f"Invalid characters in username {username}.")
+    if not is_valid_instance(instance):
+        raise ValueError(f"Invalid characters in instance {instance}.")
 
-    mastodon = Mastodon(access_token=access_token, api_base_url="https://mastodon.social")
+    mastodon = Mastodon(access_token=access_token, api_base_url=f"https://mastodon.social")
 
-    # Extract user handle
-    user_handle = username.strip('@').split('@')[0]
+    accounts = mastodon.account_search(username, limit=1)
+    for account in accounts:
+        if account.acct == username or account.acct == f"{username}@{instance}":
+            return account["id"]
+    raise ValueError(f"User {username} not found.")
 
-    if not is_valid_username(user_handle):
-        raise ValueError(f"Invalid username format.")
-
-    # Search for the user account
-    accounts = mastodon.account_search(user_handle)
-    print(user_handle, accounts)
-    if not accounts:
-        raise ValueError(f"User {username} not found.")
-
-    user_id = accounts[0]['id']
+def fetch_recent_posts(username_input, num_posts=60):
+    user_id = get_user_id(username_input)
 
     posts = []
     max_id = None
@@ -95,15 +105,14 @@ def fetch_recent_posts(username, num_posts=60):
 
         max_id = fetched_posts[-1]['id'] - 1 # Update max_id for pagination
 
-    # Apply clean_post and return the exact number of posts needed
     cleaned_posts = [clean_post(post['content']) for post in posts[:num_posts]]
 
     return cleaned_posts
 
+# Test code
 if __name__ == "__main__":
-    username = input("Enter the Mastodon username: ")
-    formatted_username = format_username(username)
-    posts = fetch_recent_posts(formatted_username, 20)
+    username_input = input("Enter the Mastodon username: ")
+    posts = fetch_recent_posts(username_input, 60)
 
     if posts:
         print(f"Recent posts from {formatted_username}:")
