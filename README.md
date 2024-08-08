@@ -2,7 +2,7 @@
 
 WIP
 
-This natural language processing AI/ML project leverages sentiment analysis to detect depression from social media posts. It utilizes binary classification with transformers to accurately identify potential signs of depression in user content. 
+This natural language processing AI/ML project leverages sentiment analysis to detect depression from personal, text-based social media posts in English. It utilizes binary classification with transformers to accurately identify potential signs of depression in user content. 
 
 We deploy our project as a Flask web app using ngrok (permanent url may be provided soon).
 
