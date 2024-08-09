@@ -8,7 +8,6 @@ MASTODON_EMAIL = os.environ.get('MASTODON_EMAIL')
 MASTODON_PASSWORD = os.environ.get('MASTODON_PASSWORD')
 client_id = os.environ.get('MASTODON_CLIENT_ID')
 client_secret = os.environ.get('MASTODON_CLIENT_SECRET')
-print(type(MASTODON_EMAIL), type(MASTODON_PASSWORD), type(client_id), type(client_secret))
 
 if not client_id or not client_secret:
     client_id, client_secret = Mastodon.create_app(
