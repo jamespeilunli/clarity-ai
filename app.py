@@ -1,7 +1,5 @@
-from flask import Flask, jsonify, render_template, request, Response
+from flask import Flask, jsonify, render_template, request
 from fetch_posts import fetch_recent_posts
-from pyngrok import ngrok, conf
-import os
 import multi_post
 import single_post 
 
