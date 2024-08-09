@@ -55,15 +55,4 @@ def data():
     return response
 
 if __name__ == '__main__':
-    # Set ngrok auth token
-    conf.get_default().auth_token = os.environ.get("NGROK_AUTH_TOKEN")
-    
-    # Ensure no other ngrok sessions are running
-    os.system("killall ngrok")
-    
-    # Start ngrok when the Flask app starts
-    public_url = ngrok.connect(5000)
-    print(" * ngrok tunnel \"{}\" -> \"http://127.0.0.1:5000\"".format(public_url))
-    
-    # Start the Flask app
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=True)
