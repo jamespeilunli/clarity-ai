@@ -1,4 +1,4 @@
-# Clarity
+# Clarity AI
 
 WIP
 
