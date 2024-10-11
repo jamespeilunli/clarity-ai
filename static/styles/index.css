@@ -27,7 +27,6 @@ html,
 body {
     height: 100%;
     margin: 0;
-    overflow-X: hidden;
 }
 
 html::-webkit-scrollbar {
@@ -697,12 +696,7 @@ i {
     opacity: 0;
     animation: slideUp 0.5s forwards;
 }
-@keyframes slideUp {
-    to {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-    }
-}
+
 form input {
     color: var(--title-color);
     width: 100%;
@@ -1114,7 +1108,12 @@ button.contact-btn,
     }
 }
 
-
+@keyframes slideUp {
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
 
 .button-border {
     background-color: var(--card-color);
@@ -1158,208 +1157,4 @@ button.contact-btn,
 
 .no-scroll {
     overflow: hidden;
-}
-.cloud {
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    animation: fade-away-left 5s forwards; /* Apply the default fade-away-left animation */
-  z-index: 100;
-}
-
-.cloud::before, .cloud::after {
-    content: '';
-    background: #fff;
-    position: absolute;
-    border-radius: 50%;
-}
-
-.cloud::before {
-    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.1);
-}
-
-.cloud::after {
-    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.1);
-}
-
-/* Cloud Sizes and Initial Positions */
-.cloud-1 {
-  
-    width: 150px;
-    height: 80px;
-    top: 40%;
-    left: 30%;
-    animation: fade-in 1.5s ease-in forwards, fade-away-left 5s forwards;
-    animation-delay: 0s, 3s;
-}
-
-.cloud-1::before {
-    width: 90px;
-    height: 90px;
-    top: -30px;
-    left: 20px;
-}
-
-.cloud-1::after {
-    width: 70px;
-    height: 70px;
-    top: -20px;
-    right: 20px;
-}
-
-.cloud-2 {
-    width: 180px;
-    height: 100px;
-    top: 45%;
-    left: 60%;
-    animation:fade-in 1.5s ease-in forwards, fade-away-right 5s forwards; /* Change animation for right-moving clouds */
-    animation-delay:0s, 3.2s;
-}
-
-.cloud-2::before {
-    width: 100px;
-    height: 100px;
-    top: -40px;
-    left: 30px;
-}
-
-.cloud-2::after {
-    width: 80px;
-    height: 80px;
-    top: -30px;
-    right: 20px;
-}
-
-.cloud-3 {
-    width: 120px;
-    height: 60px;
-    top: 55%;
-    left: 45%;
-    animation:fade-in 1.5s ease-in forwards, fade-away-left 5s forwards;
-    animation-delay:0s, 3.4s;
-}
-
-.cloud-3::before {
-    width: 80px;
-    height: 80px;
-    top: -20px;
-    left: 15px;
-}
-
-.cloud-3::after {
-    width: 60px;
-    height: 60px;
-    top: -15px;
-    right: 10px;
-}
-
-.cloud-4 {
-    width: 100px;
-    height: 50px;
-    top: 45%;
-    left: 45%;
-    animation:fade-in 1.5s ease-in forwards, fade-away-right 5s forwards;
-    animation-delay: 0s, 3.6s;
-}
-
-.cloud-4::before {
-    width: 60px;
-    height: 60px;
-    top: -25px;
-    left: 10px;
-}
-
-.cloud-4::after {
-    width: 50px;
-    height: 50px;
-    top: -20px;
-    right: 15px;
-}
-
-.cloud-5 {
-  
-    width: 150px;
-    height: 80px;
-    top: 50%;
-    left: 50%;
-    animation:fade-in 1.5s ease-in forwards, fade-away-right 5s forwards;
-    animation-delay:0s, 3.8s;
-}
-
-.cloud-5::before {
-    width: 90px;
-    height: 90px;
-    top: -30px;
-    left: 20px;
-}
-
-.cloud-5::after {
-    width: 70px;
-    height: 70px;
-    top: -20px;
-    right: 20px;
-}
-
-.cloud-6 {
-  
-    width: 150px;
-    height: 80px;
-    top: 30%;
-    right: 47%;
-    animation:fade-in 1.5s ease-in forwards, fade-away-left 5s forwards;
-    animation-delay: 0s, 4s;
-}
-
-.cloud-6::before {
-    width: 90px;
-    height: 90px;
-    top: -30px;
-    left: 20px;
-}
-
-.cloud-6::after {
-    width: 70px;
-    height: 70px;
-    top: -20px;
-    right: 20px;
-}
-
-/* Animation for clouds moving left */
-@keyframes fade-away-left {
-    0% {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-3000px) scale(1);
-    }
-}
-
-/* Animation for clouds moving right */
-@keyframes fade-away-right {
-    0% {
-        
-        opacity: 1;
-        transform: translateX(0) scale(1);
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(3000px) scale(1);
-    }
-}
-@keyframes fade-in {
-    0% {
-        opacity: 0; /* Start invisible */
-    }
-    100% {
-        opacity: 1; /* Fully visible */
-    }
 }
