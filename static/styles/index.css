@@ -91,6 +91,7 @@ p {
     text-decoration: none;
     border-radius: 100px;
     transition: background-color 0.3s, transform 0.3s;
+    margin-right: 5px;
 }
 
 .contact-btn:hover {

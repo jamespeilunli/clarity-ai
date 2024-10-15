@@ -29,9 +29,13 @@ function showForm(title) {
     formTitle.textContent = title;
     formContainer.style.display = "block";
     formInput.value = "";
+    if (formTitle.textContent == "Account Handle") {
+        formInput.placeholder = "Enter a Mastodon handle";
+    } else {
+        formInput.placeholder = "Enter text here";
+    }
     document.body.classList.add("blur");
     document.body.classList.add("no-scroll");
-
 }
 
 function closeForm() {

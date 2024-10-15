@@ -8,32 +8,19 @@
 </head>
 
 <body>
-    <!-- partial:index.partial.html -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <div class="fPage">
-
-        <title>Contact Popup</title>
-
         <body>
             <div class="header">
-                <span class="contact-btn-content"></span>
-                <a class="contact-btn" onclick="showModal()">
+                <a class="contact-btn" href="about-us">
                     <span class="glow"></span>
-                    Contact Us
+                    About Us
+                </a>
+                <a href="https://github.com/jamespeilunli/utd-summer-ai">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="37px" height="37px">
                 </a>
             </div>
-
-            <!-- The Modal -->
-            <div id="contactModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <h1>Contact<br></h1>
-                    <p class="modal-text">Visit the <a
-                            href="https://github.com/jamespeilunli/utd-summer-ai" target="_blank">GitHub repository</a></p>
-                </div>
-            </div>
         </body>
-
 
         <div class="spotlight">
             <div></div>
@@ -74,7 +61,20 @@
     <div class="hero-spacer"></div>
 
     <div class="content-section">
+        <div class="content-acc">
+            <div></div>
+            <div></div>
+        </div>
+        <p class="subt">Your posts speak volumes.</p>
+        <h3 class="title"> AI understands.
+        </h3>
+        <p class="subp">Our natural language processing AI models attempt to detect signs of depression from personal, text-based social media posts in English.</p>
+    </div>
 
+    </div>
+
+    <div class="content-section">
+        <h3 class="title">Try our models!</h3>
         <div id="cards">
             <div class="card" onclick="showForm('Account Handle')">
                 <div class="card-content">
@@ -86,7 +86,8 @@
                             <i class="fa fa-at"></i>
                             <div class="card-info-title">
                                 <h3>Account Handle</h3>
-                                <h4>which account should we look at?</h4>
+                                <h4>A Mastodon account with multiple posts to analyze</h4>
+                                <h4>Outputs confidence percentage indicating depression level</h4>
                             </div>
                         </div>
                     </div>
@@ -103,6 +104,7 @@
                             <div class="card-info-title">
                                 <h3>Single Post</h3>
                                 <h4>A single post for us to analyze</h4>
+                                <h4>Outputs a classification of depressed/not depressed</h4>
                             </div>
                         </div>
                     </div>
@@ -113,7 +115,7 @@
             <button class="close-btn" onclick="closeForm()">×</button>
             <form id="input-form">
                 <h3 id="form-title"></h3>
-                <input type="text" id="user-input" name="user-input" placeholder="Enter your input" required>
+                <input type="text" id="user-input" name="user-input" placeholder="Enter text here" required>
 
                 <button type="submit" class="button-border">Submit</button>
 
@@ -121,20 +123,7 @@
         </div>
     </div>
 
-    <div class="content-section">
-        <div class="content-acc">
-            <div></div>
-            <div></div>
-        </div>
-        <p class="subt">Your posts speak volumes.</p>
-        <h3 class="title"> AI understands.
-        </h3>
-        <p class="subp">Our technology identifies patterns in your posts to offer insights into your mental health. Let
-            us
-            help you understand your emotions and find support.</p>
-    </div>
 
-    </div>
     <!-- partial -->
     <script src="{{ url_for('static',filename='index.js') }}"></script>
 
