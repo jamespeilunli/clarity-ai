@@ -9,15 +9,16 @@ if (!inputData) {
 fetch("/model", {
     method: "POST",
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     },
     body: inputData,
 })
     .then((response) => {
         if (!response.ok) {
-            return response.text().then((text) => { throw new Error(text) });
-        }
-        else {
+            return response.text().then((text) => {
+                throw new Error(text);
+            });
+        } else {
             return response.json();
         }
     })
@@ -33,21 +34,22 @@ fetch("/model", {
 
 function displayOutput(percentage) {
     // Select the elements where the percentage and graph are displayed
-    const percentageDisplay = document.querySelector('.percentage-display');
-    const graphContainer = document.querySelector('.graph-container');
-    const sadPage = document.querySelector('.sad-page');
-    const happyPage = document.querySelector('.happy-page');
+    const percentageDisplay = document.querySelector(".percentage-display");
+    const graphContainer = document.querySelector(".graph-container");
+    const sadPage = document.querySelector(".sad-page");
+    const happyPage = document.querySelector(".happy-page");
 
-    let inputType = JSON.parse(localStorage.getItem('inputData')).inputType;
+    let inputType = JSON.parse(localStorage.getItem("inputData")).inputType;
     console.log(inputType);
 
     if (inputType === "Single Post") {
         if (percentage > 50) {
-            sadPage.style.display = 'block';
+            sadPage.style.display = "block";
         } else {
-            happyPage.style.display = 'block';
+            happyPage.style.display = "block";
         }
-    } if (inputType === "Account Handle") {
+    }
+    if (inputType === "Account Handle") {
         // Initialize the current percentage and animation parameters
         let currentPercentage = 0;
         const duration = 2000; // Duration of the animation in milliseconds
@@ -55,8 +57,8 @@ function displayOutput(percentage) {
         const step = percentage / (duration / interval); // Amount to increment each interval
 
         // Ensure the elements are visible
-        percentageDisplay.style.display = 'block';
-        graphContainer.style.display = 'block';
+        percentageDisplay.style.display = "block";
+        graphContainer.style.display = "block";
 
         // Set up an interval to gradually update the percentage display and graph
         const intervalId = setInterval(() => {
@@ -69,11 +71,11 @@ function displayOutput(percentage) {
                 // Update the text content to display the current percentage
                 percentageDisplay.textContent = `${Math.round(currentPercentage)}%`;
                 // Update the CSS variable for the graph's rating
-                graphContainer.style.setProperty('--rating', currentPercentage / 20);
+                graphContainer.style.setProperty("--rating", currentPercentage / 20);
             }
         }, interval);
     }
 
     statusElement.innerText = "";
-    console.log(statusElement)
+    console.log(statusElement);
 }

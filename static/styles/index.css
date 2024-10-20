@@ -189,7 +189,7 @@ button.contact-btn:hover .glow::before {
     overflow: hidden;
 }
 
-.header .spotlight>div {
+.header .spotlight > div {
     border-radius: 0 0 50% 50%;
     position: absolute;
     left: 0;
@@ -204,12 +204,12 @@ button.contact-btn:hover .glow::before {
     animation: load 2s ease-in-out forwards, loadrot 2s ease-in-out forwards, spotlight 21s ease-in-out infinite reverse;
 }
 
-.header .spotlight>div:nth-child(1) {
+.header .spotlight > div:nth-child(1) {
     rotate: 20deg;
     animation: load 2s ease-in-out forwards, loadrot 2s ease-in-out forwards, spotlight 17s ease-in-out infinite;
 }
 
-.header .spotlight>div:nth-child(2) {
+.header .spotlight > div:nth-child(2) {
     rotate: -20deg;
     animation: load 2s ease-in-out forwards, loadrot 2s ease-in-out forwards, spotlight 14s ease-in-out infinite;
 }
@@ -488,8 +488,7 @@ canvas#particleCanvas {
     width: 10em;
     height: 10em;
     border-radius: 50%;
-    box-shadow: -1em -0.2em 0.4em -1.1em #c2ccff, inset 0em 0em 0em 2px #c2ccff,
-        inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
+    box-shadow: -1em -0.2em 0.4em -1.1em #c2ccff, inset 0em 0em 0em 2px #c2ccff, inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
         inset -1.2em 2.3em 2em -0.5em #d4e6ff2f;
     background: var(--background-color);
     z-index: 1;
@@ -501,8 +500,7 @@ canvas#particleCanvas {
 .content-section .content-acc div:nth-child(2) {
     transform: translate(18em, 12em);
     border-radius: 2em;
-    box-shadow: -1em -0.2em 0.4em -1.1em #c2ccff, inset 0em 0em 0em 2px #c2ccff,
-        inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
+    box-shadow: -1em -0.2em 0.4em -1.1em #c2ccff, inset 0em 0em 0em 2px #c2ccff, inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
         inset 10.8em 11.3em 2em -10.5em #d4e6ff2f;
 }
 
@@ -521,7 +519,6 @@ canvas#particleCanvas {
 }
 
 .card {
-
     flex-shrink: 1;
     width: calc(50% - 4px);
     background-color: rgba(255, 255, 255, 0.1);
@@ -560,20 +557,16 @@ canvas#particleCanvas {
 }
 
 .card::before {
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(8, 204, 255, 0.1),
-            transparent 40%);
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(8, 204, 255, 0.1), transparent 40%);
     z-index: 3;
 }
 
 .card::after {
-    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
-            var(--title-color),
-            transparent 40%);
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--title-color), transparent 40%);
     z-index: 1;
 }
 
-.card>.card-content {
+.card > .card-content {
     background-color: var(--card-color);
     border-radius: inherit;
     display: flex;
@@ -608,7 +601,7 @@ i {
     overflow: hidden;
 }
 
-.card-image>i {
+.card-image > i {
     font-size: 6em;
     opacity: 0.25;
 }
@@ -627,24 +620,24 @@ i {
     gap: 10px;
 }
 
-.card-info>i {
+.card-info > i {
     font-size: 1em;
     height: 20px;
     line-height: 20px;
 }
 
-.card-info-title>h3 {
+.card-info-title > h3 {
     font-size: 1.1em;
     line-height: 20px;
 }
 
-.card-info-title>h4 {
+.card-info-title > h4 {
     color: var(--title-color);
     font-size: 0.85em;
     margin-top: 8px;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
     .card {
         height: 180px;
     }
@@ -653,7 +646,7 @@ i {
         height: 80px;
     }
 
-    .card-image>i {
+    .card-image > i {
         font-size: 3em;
     }
 
@@ -661,21 +654,21 @@ i {
         padding: 0px 10px;
     }
 
-    .card-info>i {
+    .card-info > i {
         font-size: 0.8em;
     }
 
-    .card-info-title>h3 {
+    .card-info-title > h3 {
         font-size: 0.9em;
     }
 
-    .card-info-title>h4 {
+    .card-info-title > h4 {
         font-size: 0.8em;
         margin-top: 4px;
     }
 }
 
-@media (max-width:320px) {
+@media (max-width: 320px) {
     .card {
         width: 100%;
     }
@@ -791,7 +784,6 @@ form input:hover {
 }
 
 @keyframes scale {
-
     from,
     to {
         transform: scale(0);
@@ -820,12 +812,12 @@ h1 {
     text-align: center;
 }
 
-h1>.magic {
+h1 > .magic {
     display: inline-block;
     position: relative;
 }
 
-h1>.magic>.magic-star {
+h1 > .magic > .magic-star {
     --size: clamp(20px, 1.5vw, 30px);
     animation: scale 700ms ease forwards;
     display: block;
@@ -836,17 +828,17 @@ h1>.magic>.magic-star {
     width: var(--size);
 }
 
-h1>.magic>.magic-star>svg {
+h1 > .magic > .magic-star > svg {
     animation: rotate 1000ms linear infinite;
     display: block;
     opacity: 0.7;
 }
 
-h1>.magic>.magic-star>svg>path {
+h1 > .magic > .magic-star > svg > path {
     fill: var(--violet);
 }
 
-h1>.magic>.magic-text {
+h1 > .magic > .magic-text {
     color: var(--title-color);
     animation: background-pan 3s linear infinite;
     background: linear-gradient(to right, var(--purple), var(--violet), var(--pink), var(--purple));
@@ -861,7 +853,7 @@ h1>.magic>.magic-text {
     position: relative;
 }
 
-.magic>.magic-star {
+.magic > .magic-star {
     --size: clamp(20px, 1.5vw, 30px);
     animation: scale 700ms ease forwards;
     display: block;
@@ -872,20 +864,19 @@ h1>.magic>.magic-text {
     width: var(--size);
 }
 
-.magic>.magic-star>svg {
+.magic > .magic-star > svg {
     animation: rotate 1000ms linear infinite;
     display: block;
     opacity: 0.7;
 }
 
-.magic>.magic-star>svg>path {
+.magic > .magic-star > svg > path {
     fill: var(--violet);
 }
 
 body {
-    font-family: Untitled Sans, system-ui, -apple-system, BlinkMacSystemFont,
-        Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue,
-        sans-serif;
+    font-family: Untitled Sans, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+        Cantarell, Open Sans, Helvetica Neue, sans-serif;
     background: var(--background-color) linear-gradient(0deg, rgba(248, 236, 216, 0.06), rgba(239, 192, 152, 0.06));
     font-size: max(calc(var(--_size) * 0.03), 10px);
     --_factor: min(600px, 80vh);
@@ -910,7 +901,7 @@ button.contact-btn,
     background-color: var(--card-color);
 }
 
-.heroT>h2 {
+.heroT > h2 {
     position: absolute;
     left: 0;
     right: 0;
@@ -919,11 +910,13 @@ button.contact-btn,
     font-size: 7em;
     font-weight: 600;
     color: var(--secondary-color);
-    background: radial-gradient(2em 2em at 50% 50%,
+    background: radial-gradient(
+            2em 2em at 50% 50%,
             transparent calc(var(--p) - 2em),
             var(--secondary-color) calc(var(--p) - 1em),
             var(--secondary-color) calc(var(--p) - 0.4em),
-            transparent var(--p)),
+            transparent var(--p)
+        ),
         linear-gradient(0deg, var(--primary-color) 30%, var(--secondary-color) 100%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -943,13 +936,15 @@ button.contact-btn,
     font-size: 7em;
     font-weight: 600;
     color: var(--secondary-color);
-    background: radial-gradient(2em 2em at 50% 50%,
-            transparent calc(var(--p) - 2em),
-            transparent calc(var(--p) - 1em),
-            #fff calc(var(--p) - 1em),
-            #fff calc(var(--p) - 0.4em),
-            transparent calc(var(--p) - 0.4em),
-            transparent var(--p));
+    background: radial-gradient(
+        2em 2em at 50% 50%,
+        transparent calc(var(--p) - 2em),
+        transparent calc(var(--p) - 1em),
+        #fff calc(var(--p) - 1em),
+        #fff calc(var(--p) - 0.4em),
+        transparent calc(var(--p) - 0.4em),
+        transparent var(--p)
+    );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -982,7 +977,6 @@ button.contact-btn,
     }
 }
 
-
 .mountains {
     position: absolute;
     left: 0;
@@ -1006,8 +1000,9 @@ button.contact-btn,
     z-index: 2;
 }
 
-.mountains>div {
-    box-shadow: -1em -0.2em 0.4em -1.1em #c2ccff, inset 0em 0em 0em 2px #c2ccff, inset 0.2em 0.3em 0.2em -0.2em #c2ccff, inset 10.2em 10.3em 2em -10em #f4e6ff2f;
+.mountains > div {
+    box-shadow: -1em -0.2em 0.4em -1.1em #c2ccff, inset 0em 0em 0em 2px #c2ccff, inset 0.2em 0.3em 0.2em -0.2em #c2ccff,
+        inset 10.2em 10.3em 2em -10em #f4e6ff2f;
     background: var(--background-color);
     z-index: 1;
     filter: brightness(0.8);
@@ -1020,13 +1015,13 @@ button.contact-btn,
     rotate: 45deg;
 }
 
-.mountains>div:nth-child(1) {
+.mountains > div:nth-child(1) {
     bottom: -240%;
     transform: translate(-6em, 2em);
     animation: mountainload1 2s ease-out 2.4s forwards;
 }
 
-.mountains>div:nth-child(2) {
+.mountains > div:nth-child(2) {
     bottom: -240%;
     transform: translate(-2em, 0em);
     width: 14em;
@@ -1034,7 +1029,7 @@ button.contact-btn,
     animation: mountainload2 2s ease-out 2.2s forwards;
 }
 
-.mountains>div:nth-child(3) {
+.mountains > div:nth-child(3) {
     bottom: -240%;
     transform: translate(6em, 3em);
     animation: mountainload1 2s ease-out 2s forwards;
@@ -1060,7 +1055,7 @@ button.contact-btn,
     }
 }
 
-.mountains>div::before {
+.mountains > div::before {
     content: "";
     display: block;
     background: repeating-radial-gradient(at 100% 100%, transparent 0%, #c2ccff22 2px, transparent 4px);
@@ -1072,7 +1067,7 @@ button.contact-btn,
     border-bottom-right-radius: 100%;
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
     .card {
         height: 180px;
     }
@@ -1081,7 +1076,7 @@ button.contact-btn,
         height: 80px;
     }
 
-    .card-image>i {
+    .card-image > i {
         font-size: 3em;
     }
 
@@ -1089,21 +1084,21 @@ button.contact-btn,
         padding: 0px 10px;
     }
 
-    .card-info>i {
+    .card-info > i {
         font-size: 0.8em;
     }
 
-    .card-info-title>h3 {
+    .card-info-title > h3 {
         font-size: 0.9em;
     }
 
-    .card-info-title>h4 {
+    .card-info-title > h4 {
         font-size: 0.8em;
         margin-top: 4px;
     }
 }
 
-@media (max-width:320px) {
+@media (max-width: 320px) {
     .card {
         width: 100%;
     }
@@ -1150,7 +1145,6 @@ button.contact-btn,
 .subt {
     color: var(--background-text-color);
 }
-
 
 .no-scroll {
     overflow: hidden;

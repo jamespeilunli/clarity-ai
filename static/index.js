@@ -11,15 +11,18 @@ function handleSubmit(event) {
     event.preventDefault();
     const userInput = document.getElementById("user-input").value;
     const inputType = document.getElementById("form-title").innerText;
-    localStorage.setItem('inputData', JSON.stringify({
-        input: userInput,
-        inputType: inputType
-    }));
+    localStorage.setItem(
+        "inputData",
+        JSON.stringify({
+            input: userInput,
+            inputType: inputType,
+        })
+    );
 
     console.log("0 User Input:", userInput);
     console.log("0 Input Type:", inputType);
 
-    window.location.href = '/results';
+    window.location.href = "/results";
 }
 
 function showForm(title) {
@@ -56,20 +59,20 @@ let index = 0,
 
 // Function to show the modal
 function showModal() {
-    document.querySelector('.modal').style.display = 'block';
-    document.body.classList.add('no-scroll');
+    document.querySelector(".modal").style.display = "block";
+    document.body.classList.add("no-scroll");
 }
 
 // Function to hide the modal
 function hideModal() {
-    document.querySelector('.modal').style.display = 'none';
-    document.body.classList.remove('no-scroll');
+    document.querySelector(".modal").style.display = "none";
+    document.body.classList.remove("no-scroll");
 }
 
 // Example event listeners
-document.querySelector('.close').addEventListener('click', hideModal);
-window.addEventListener('click', function (event) {
-    if (event.target.classList.contains('modal')) {
+document.querySelector(".close").addEventListener("click", hideModal);
+window.addEventListener("click", function (event) {
+    if (event.target.classList.contains("modal")) {
         hideModal();
     }
 });

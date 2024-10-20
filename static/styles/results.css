@@ -135,7 +135,7 @@
     content: "";
     position: absolute;
     border: calc(var(--round-size) / 3) solid transparent;
-    border-right: calc(var(--size) * 0.4) solid #FFF;
+    border-right: calc(var(--size) * 0.4) solid #fff;
     left: 0%;
     bottom: 0;
     transform: translate(-100%, 50%) rotate(-45deg);
@@ -307,7 +307,7 @@ body {
     font-family: sans-serif;
     margin: 1em;
     padding: 0;
-    position : absolute;
+    position: absolute;
     left: 0;
     bottom: 0;
 }
