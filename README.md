@@ -4,7 +4,7 @@ WIP
 
 This natural language processing AI/ML project leverages sentiment analysis to detect depression from personal, text-based social media posts in English. It utilizes binary classification with transformers to accurately identify potential signs of depression in user content. 
 
-We deploy our project as a Flask web app using ngrok (permanent url may be provided soon).
+We deployed our project on an AWS EC2 instance. Check it out at [ai-clarity.org](https://ai-clarity.org/)!
 
 Our team of six high schoolers developed this as our project for the 2024 summer UTD Deep Dive AI Workshop. Our project placed first out of the 30 teams attending the workshop!
 
