@@ -76,35 +76,29 @@
     <div class="content-section">
         <h3 class="title">Try our models!</h3>
         <div id="cards">
-            <div class="card" onclick="showForm('Account Handle')">
+            <div class="card" onclick="window.location.href = '/depression'">
                 <div class="card-content">
                     <div class="card-image">
-                        <i class="fa fa-at"></i>
+                        <i class="fa-solid fa-cloud-showers-heavy"></i>
                     </div>
                     <div class="card-info-wrapper">
                         <div class="card-info">
-                            <i class="fa fa-at"></i>
                             <div class="card-info-title">
-                                <h3>Account Handle</h3>
-                                <h4>A Mastodon account with multiple posts to analyze</h4>
-                                <h4>Outputs confidence percentage indicating depression level</h4>
+                                <h3>Depression Detection</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card" onclick="showForm('Single Post')">
+            <div class="card" onclick="window.location.href = '/anxiety'">
                 <div class="card-content">
                     <div class="card-image">
-                        <i class="fa fa-image"></i>
+                        <i class="fa-solid fa-wind"></i>
                     </div>
                     <div class="card-info-wrapper">
                         <div class="card-info">
-                            <i class="fa fa-image"></i>
                             <div class="card-info-title">
-                                <h3>Single Post</h3>
-                                <h4>A single post for us to analyze</h4>
-                                <h4>Outputs a classification of depressed/not depressed</h4>
+                                <h3>Anxiety Detection</h3>
                             </div>
                         </div>
                     </div>
@@ -125,7 +119,6 @@
 
 
     <!-- partial -->
-    <script src="{{ url_for('static',filename='index.js') }}"></script>
 
 </body>
 

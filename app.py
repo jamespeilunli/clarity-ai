@@ -11,6 +11,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/depression")
+def depression():
+    return render_template("depression.html")
+
+
 @app.route("/about-us")
 def about_us():
     return render_template("about_us.html")
