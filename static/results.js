@@ -49,7 +49,7 @@ function displayOutput(percentage) {
             happyPage.style.display = "block";
         }
     }
-    if (inputType === "Account Handle") {
+    if (inputType === "Account Handle" || inputType === "Anxiety Account Handle") {
         // Initialize the current percentage and animation parameters
         let currentPercentage = 0;
         const duration = 2000; // Duration of the animation in milliseconds

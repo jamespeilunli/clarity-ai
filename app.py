@@ -2,6 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from fetch_posts import fetch_recent_posts
 import multi_post
 import single_post
+import anxiety_multi_post
 
 app = Flask(__name__)
 
@@ -14,6 +15,11 @@ def index():
 @app.route("/depression")
 def depression():
     return render_template("depression.html")
+
+
+@app.route("/anxiety")
+def anxiety():
+    return render_template("anxiety.html")
 
 
 @app.route("/about-us")
@@ -49,6 +55,15 @@ def model():
                 "message": "Success!",
                 "input": data,
                 "percentage": depression_score,
+            }, 200
+        elif input_type == "Anxiety Account Handle":
+            mastodon_posts = fetch_recent_posts(user_input, 50)
+            anxiety_score = anxiety_multi_post.returnScore(mastodon_posts) * 100
+            return {
+                "message": "Success!",
+                "input": data,
+                "posts": mastodon_posts,
+                "percentage": anxiety_score,
             }, 200
         else:
             return "invalid input type", 400
