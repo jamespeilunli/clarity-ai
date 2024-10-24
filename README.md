@@ -39,7 +39,9 @@ Aryan Bhattacharya, Daniel Hoffmaster, Peilun Li, Kyle Liu, Ishaant Majumdar, Jo
 
 ### Backend - Social Media Post Retrieval
 
-We use the [Mastodon.py API](https://mastodonpy.readthedocs.io/en/stable/) in `fetch_posts.py` to retrieve users’ past Mastodon posts for our multi-post model to later analyze. We also perform basic input handling as well as parsing of the retrieved mastodon posts (e.g. removing html tags and preserving hashtags).
+We use the [Mastodon.py API](https://mastodonpy.readthedocs.io/en/stable/) in `fetch_mastodon_posts.py` to retrieve users’ past Mastodon posts for our multi-post model to later analyze. We also perform basic input handling as well as parsing of the retrieved mastodon posts (e.g. removing html tags and preserving hashtags).
+
+We also use a Reddit API in `fetch_reddit_posts.py` to retrive Reddit posts by user.
 
 ### Frontend
 
