@@ -6,6 +6,15 @@ if (!inputData) {
     throw new Error("input data is null");
 }
 
+let inputType = JSON.parse(localStorage.getItem("inputData")).inputType;
+
+document.getElementById("title").textContent = `Detected ${
+    inputType === "Anxiety Account Handle" ? "Anxiety" : "Depression"
+} Level`;
+document.getElementById("back-button").onclick = () => {
+    location.href = `/${inputType === "Anxiety Account Handle" ? "anxiety" : "depression"}`;
+};
+
 fetch("/model", {
     method: "POST",
     headers: {
@@ -39,9 +48,6 @@ function displayOutput(percentage) {
     const sadPage = document.querySelector(".sad-page");
     const happyPage = document.querySelector(".happy-page");
 
-    let inputType = JSON.parse(localStorage.getItem("inputData")).inputType;
-    console.log(inputType);
-
     if (inputType === "Single Post") {
         if (percentage > 50) {
             sadPage.style.display = "block";
@@ -49,7 +55,7 @@ function displayOutput(percentage) {
             happyPage.style.display = "block";
         }
     }
-    if (inputType === "Account Handle") {
+    if (inputType === "Account Handle" || inputType === "Anxiety Account Handle") {
         // Initialize the current percentage and animation parameters
         let currentPercentage = 0;
         const duration = 2000; // Duration of the animation in milliseconds
@@ -77,5 +83,6 @@ function displayOutput(percentage) {
     }
 
     statusElement.innerText = "";
+    statusElement.style = "display: none;";
     console.log(statusElement);
 }

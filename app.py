@@ -11,6 +11,16 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/depression")
+def depression():
+    return render_template("depression.html")
+
+
+@app.route("/anxiety")
+def anxiety():
+    return render_template("anxiety.html")
+
+
 @app.route("/about-us")
 def about_us():
     return render_template("about_us.html")
@@ -31,6 +41,7 @@ def model():
     try:
         if input_type == "Account Handle":
             mastodon_posts = fetch_recent_posts(user_input, 60)
+            multi_post.setModel("depression_model.pt")
             depression_score = multi_post.returnScore(mastodon_posts) * 100
             return {
                 "message": "Success!",
@@ -44,6 +55,16 @@ def model():
                 "message": "Success!",
                 "input": data,
                 "percentage": depression_score,
+            }, 200
+        elif input_type == "Anxiety Account Handle":
+            mastodon_posts = fetch_recent_posts(user_input, 50)
+            multi_post.setModel("anxiety_model.pt")
+            anxiety_score = multi_post.returnScore(mastodon_posts) * 100
+            return {
+                "message": "Success!",
+                "input": data,
+                "posts": mastodon_posts,
+                "percentage": anxiety_score,
             }, 200
         else:
             return "invalid input type", 400

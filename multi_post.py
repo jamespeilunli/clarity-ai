@@ -62,9 +62,20 @@ class SentimentClassifier(nn.Module):
         return self.out(norm)# return the output from the linear layer
     
 
-model = SentimentClassifier(len(['not depressed', 'depressed']))
-model.load_state_dict(torch.load("multi_post_model.pt", map_location=device))
-model = model.to(device)
+model = None
+anxiety_model = SentimentClassifier(len(['not anxious', 'anxious']))
+anxiety_model.load_state_dict(torch.load("anxiety_model.pt", map_location=device))
+anxiety_model_model= anxiety_model.to(device)
+depression_model = SentimentClassifier(len(['not depressed', 'depressed']))
+depression_model.load_state_dict(torch.load("depression_model.pt", map_location=device))
+depression_model= depression_model.to(device)
+
+def setModel(model_filename):
+    global model
+    if model_filename == "anxiety_model.pt":
+        model = anxiety_model
+    else:
+        model = depression_model
 
 
 def encodeArray(strArr):

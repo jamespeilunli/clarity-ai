@@ -40,7 +40,7 @@ class SentimentClassifier(nn.Module):
         output = self.drop(pooled_output)
         return torch.sigmoid(self.out(output))
 
-test = torch.load("single_post_model.pt", map_location=device)
+test = torch.load("depression_single_post_model.pt", map_location=device)
 model = SentimentClassifier(len(class_names))
 model.load_state_dict(test)
 model = model.to(device)
