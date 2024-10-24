@@ -2,7 +2,6 @@ from flask import Flask, jsonify, render_template, request
 from fetch_posts import fetch_recent_posts
 import multi_post
 import single_post
-import anxiety_multi_post
 
 app = Flask(__name__)
 
@@ -42,6 +41,7 @@ def model():
     try:
         if input_type == "Account Handle":
             mastodon_posts = fetch_recent_posts(user_input, 60)
+            multi_post.setModel("depression_model.pt")
             depression_score = multi_post.returnScore(mastodon_posts) * 100
             return {
                 "message": "Success!",
@@ -58,7 +58,8 @@ def model():
             }, 200
         elif input_type == "Anxiety Account Handle":
             mastodon_posts = fetch_recent_posts(user_input, 50)
-            anxiety_score = anxiety_multi_post.returnScore(mastodon_posts) * 100
+            multi_post.setModel("anxiety_model.pt")
+            anxiety_score = multi_post.returnScore(mastodon_posts) * 100
             return {
                 "message": "Success!",
                 "input": data,
