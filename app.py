@@ -58,7 +58,7 @@ def model():
                 "percentage": depression_score,
             }, 200
         elif input_type == "Anxiety Account Handle":
-            mastodon_posts = fetch_reddit_posts.fetch_recent_posts(user_input, 50)
+            mastodon_posts = fetch_mastodon_posts.fetch_recent_posts(user_input, 50)
             multi_post.setModel("anxiety_model.pt")
             anxiety_score = multi_post.returnScore(mastodon_posts) * 100
             return {
@@ -91,7 +91,6 @@ def data():
     response.status_code = 200
 
     return response
-
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=True)
