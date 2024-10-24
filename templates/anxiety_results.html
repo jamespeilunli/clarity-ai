@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/anxiety_results.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Varela Round" rel="stylesheet"> <!-- Google Font -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1 id="title"></h1>
+
+    <p id="status" >Computing...</p>
+
+    <div class="graph-container" style="display: none;">
+        <div class="half-donut">
+            <div class="slice"><i class="fa-regular fa-face-grin-hearts"></i></div>
+            <div class="slice"><i class="fa-regular fa-face-smile"></i></div>
+            <div class="slice"><i class="fa-regular fa-face-meh"></i></div>
+            <div class="slice"><i class="fa-regular fa-face-frown"></i></div>
+            <div class="slice"><i class="fa-regular fa-face-grimace"></i></div>
+        </div>
+        <div class="marker"></div>
+        <div class="percentage-display">0%</div>
+    </div>
+
+    <div class="button-container">
+        <button id="back-button" onclick="location.href='/'">Go Back</button>
+    </div>
+
+    <p class="disclaimer">DISCLAIMER: The output of this AI model is for informational purposes only and does not provide medical advice or diagnosis. Always consult a qualified healthcare provider for any concerns regarding mental health.</p>
+
+    <script src="../static/results.js"></script>
+</body>
+</html>

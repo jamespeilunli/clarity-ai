@@ -32,6 +32,11 @@ def output_display():
     return render_template("results.html")
 
 
+@app.route("/anxiety/results")
+def anxiety_results():
+    return render_template("anxiety_results.html")
+
+
 @app.route("/model", methods=["POST"])
 def model():
     data = request.get_json()
