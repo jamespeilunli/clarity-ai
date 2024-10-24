@@ -32,13 +32,18 @@ def output_display():
     return render_template("results.html")
 
 
+@app.route("/anxiety/results")
+def anxiety_results():
+    return render_template("anxiety_results.html")
+
+
 @app.route("/model", methods=["POST"])
 def model():
     data = request.get_json()
     user_input = data["input"]
     input_type = data["inputType"]
     print(f"app.py: /model was called; data == {data}")
-
+    print(input_type)
     try:
         if input_type == "Account Handle":
             mastodon_posts = fetch_mastodon_posts.fetch_recent_posts(user_input, 60)
@@ -57,8 +62,18 @@ def model():
                 "input": data,
                 "percentage": depression_score,
             }, 200
-        elif input_type == "Anxiety Account Handle":
+        elif input_type == "Mastodon Account Handle":
             mastodon_posts = fetch_mastodon_posts.fetch_recent_posts(user_input, 50)
+            multi_post.setModel("anxiety_model.pt")
+            anxiety_score = multi_post.returnScore(mastodon_posts) * 100
+            return {
+                "message": "Success!",
+                "input": data,
+                "posts": mastodon_posts,
+                "percentage": anxiety_score,
+            }, 200
+        elif input_type == "Reddit Account Handle":
+            mastodon_posts = fetch_reddit_posts.fetch_recent_posts(user_input, 50)
             multi_post.setModel("anxiety_model.pt")
             anxiety_score = multi_post.returnScore(mastodon_posts) * 100
             return {

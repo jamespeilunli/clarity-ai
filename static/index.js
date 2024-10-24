@@ -22,7 +22,11 @@ function handleSubmit(event) {
     console.log("0 User Input:", userInput);
     console.log("0 Input Type:", inputType);
 
-    window.location.href = "/results";
+    if (inputType === "Mastodon Account Handle" || inputType === "Reddit Account Handle") {
+        window.location.href = "/anxiety/results";
+    } else {
+        window.location.href = "/results";
+    }
 }
 
 function showForm(title) {
