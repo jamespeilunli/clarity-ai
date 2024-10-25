@@ -1,52 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Serenify</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/anxiety.css') }}" />
+    </head>
+    <body>
+        <div class="hero">
+            <div class="heroT">
+                <h2>serenify</h2>
+                <h2>serenify</h2>
+            </div>
+        </div>
+        <p class="heroP">
+            an anxiety-detecting tool
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            />
+        </p>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Clarity</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
-</head>
-<body>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <div class="content-section">
-        <h3 class="title">Try our anxiety models!</h3>
-        <div id="cards">
-            <div class="card" onclick="showForm('Anxiety Account Handle')">
-                <div class="card-content">
-                    <div class="card-image">
-                        <i class="fa fa-at"></i>
+        <div class="header">
+            <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                alt="Serenify Logo"
+                class="logo"
+                length="240"
+                width="240"
+            />
+        </div>
+        <div class="content-section">
+            <h3 class="title">Try our anxiety models!</h3>
+            <div id="cards">
+                <div class="card" onclick="showForm('Mastodon Account Handle')">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="fa-brands fa-mastodon"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <div class="card-info-title">
+                                    <h3>Mastodon Handle</h3>
+                                    <h4>A Mastodon account with multiple posts to analyze</h4>
+                                    <h4>Outputs confidence percentage indicating anxiety level</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-info-wrapper">
-                        <div class="card-info">
-                            <i class="fa fa-at"></i>
-                            <div class="card-info-title">
-                                <h3>Account Handle</h3>
-                                <h4>A Mastodon account with multiple posts to analyze</h4>
-                                <h4>Outputs confidence percentage indicating anxiety level</h4>
+                </div>
+                <div class="card" onclick="showForm('Reddit Account Handle')">
+                    <div class="card-content">
+                        <div class="card-image">
+                            <i class="fa-brands fa-reddit"></i>
+                        </div>
+                        <div class="card-info-wrapper">
+                            <div class="card-info">
+                                <div class="card-info-title">
+                                    <h3>Reddit Handle</h3>
+                                    <h4>A Reddit account with multiple posts to analyze</h4>
+                                    <h4>Outputs confidence percentage indicating anxiety level</h4>
+                                    <h4>Work in progress</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="form-container" class="form-container" style="display: none">
+                <button class="close-btn" onclick="closeForm()">×</button>
+                <form id="input-form">
+                    <h3 id="form-title"></h3>
+                    <input type="text" id="user-input" name="user-input" placeholder="Enter text here" required />
+
+                    <button type="submit" class="button-border">Submit</button>
+                </form>
+            </div>
+
+            <div class="button-container">
+                <button id="back-button" onclick="location.href='/'">Home</button>
+            </div>
         </div>
-        <div id="form-container" class="form-container" style="display: none;">
-            <button class="close-btn" onclick="closeForm()">×</button>
-            <form id="input-form">
-                <h3 id="form-title"></h3>
-                <input type="text" id="user-input" name="user-input" placeholder="Enter text here" required>
 
-                <button type="submit" class="button-border">Submit</button>
-
-            </form>
-        </div>
-
-
-        <div class="button-container">
-            <button id="back-button" onclick="location.href='/'">Home</button>
-        </div>
-    </div>
-
-    <script src="{{ url_for('static',filename='index.js') }}"></script>
-</body>
-
+        <script src="{{ url_for('static',filename='index.js') }}"></script>
+    </body>
 </html>

@@ -1,5 +1,4 @@
 const statusElement = document.getElementById("status");
-
 let inputData = localStorage.getItem("inputData");
 if (!inputData) {
     statusElement.innerText = "Error: input data is null";
@@ -7,13 +6,14 @@ if (!inputData) {
 }
 
 let inputType = JSON.parse(localStorage.getItem("inputData")).inputType;
+const anxiety = Boolean(inputType === "Reddit Account Handle" || inputType === "Mastodon Account Handle")
 
 document.getElementById("title").textContent = `Detected ${
-    inputType === "Anxiety Account Handle" ? "Anxiety" : "Depression"
+    anxiety ? "Anxiety" : "Depression"
 } Level`;
 document.getElementById("back-button").onclick = () => {
-    location.href = `/${inputType === "Anxiety Account Handle" ? "anxiety" : "depression"}`;
-};
+    location.href = `/${anxiety ? "anxiety" : "depression"}`;
+}
 
 fetch("/model", {
     method: "POST",
@@ -55,7 +55,7 @@ function displayOutput(percentage) {
             happyPage.style.display = "block";
         }
     }
-    if (inputType === "Account Handle" || inputType === "Anxiety Account Handle") {
+    if (inputType === "Account Handle" || anxiety) {
         // Initialize the current percentage and animation parameters
         let currentPercentage = 0;
         const duration = 2000; // Duration of the animation in milliseconds
