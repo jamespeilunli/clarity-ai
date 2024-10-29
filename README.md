@@ -2,7 +2,7 @@
 
 WIP
 
-This natural language processing AI/ML project leverages sentiment analysis to detect depression from personal, text-based social media posts in English. It utilizes binary classification with transformers to accurately identify potential signs of depression in user content. 
+This natural language processing AI/ML project leverages sentiment analysis to detect depression and anxiety from personal, text-based social media posts in English. It utilizes binary classification with transformers to accurately identify potential signs of depression and anxiety in user content. 
 
 We deployed our project on an AWS EC2 instance. Check it out at [ai-clarity.org](https://ai-clarity.org/)!
 
@@ -17,7 +17,8 @@ Aryan Bhattacharya, Daniel Hoffmaster, Peilun Li, Kyle Liu, Ishaant Majumdar, Jo
 ## Tech Stack
 
 * Deployment
-  * ngrok
+  * AWS EC2
+  * Cloudflare
 * Frontend
   * HTML5 + CSS3 + JS
 * Backend
@@ -85,14 +86,5 @@ The local server should automatically update on reload when you make changes to 
 
 ### Web Deployment
 
-Make sure you have ngrok installed: [download page](https://ngrok.com/download)
+Our project is hosted on an AWS EC2 instance and is accessible via our Cloudflare domain at [ai-clarity.org](https://ai-clarity.org/).
 
-```bash
-# start gunicorn WSGI local server
-gunicorn -b 127.0.0.1:5000 app:app
-```
-in a new terminal:
-```bash
-# deploy port 5000 to ngrok
-ngrok http 5000
-```
