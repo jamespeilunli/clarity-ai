@@ -23,6 +23,7 @@ mastodon = Mastodon(
     client_id=client_id,
     client_secret=client_secret,
     api_base_url="https://mastodon.social",
+    access_token=access_token
 )
 
 def is_valid_username(username):
