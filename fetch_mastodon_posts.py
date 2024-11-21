@@ -4,10 +4,9 @@ from dotenv import load_dotenv
 from mastodon import Mastodon
 
 load_dotenv()
-MASTODON_EMAIL = os.environ.get("MASTODON_EMAIL")
-MASTODON_PASSWORD = os.environ.get("MASTODON_PASSWORD")
 client_id = os.environ.get("MASTODON_CLIENT_ID")
 client_secret = os.environ.get("MASTODON_CLIENT_SECRET")
+access_token = os.environ.get("ACCESS_TOKEN")
 
 if not client_id or not client_secret:
     client_id, client_secret = Mastodon.create_app(
@@ -24,10 +23,6 @@ mastodon = Mastodon(
     client_id=client_id,
     client_secret=client_secret,
     api_base_url="https://mastodon.social",
-)
-access_token = mastodon.log_in(
-    MASTODON_EMAIL,
-    MASTODON_PASSWORD,
 )
 
 def is_valid_username(username):
