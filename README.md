@@ -1,14 +1,12 @@
 # Clarity AI
 
-WIP
-
-This natural language processing AI/ML project leverages sentiment analysis to detect depression from personal, text-based social media posts in English. It utilizes binary classification with transformers to accurately identify potential signs of depression in user content. 
+This natural language processing AI/ML project leverages sentiment analysis to detect depression and anxiety from personal, text-based social media posts in English. It utilizes binary classification with transformers to accurately provide insights on potential mental health indicators based on users' content. 
 
 We deployed our project on an AWS EC2 instance. Check it out at [ai-clarity.org](https://ai-clarity.org/)!
 
 Our team of six high schoolers developed this as our project for the 2024 summer UTD Deep Dive AI Workshop. Our project placed first out of the 30 teams attending the workshop!
 
-**DISCLAIMER:** The output of our AI model is for informational purposes only and does not provide medical advice or diagnosis. Always consult a qualified healthcare provider for any concerns regarding mental health.
+**DISCLAIMER:** The output of our AI models are for informational purposes only and does not provide medical advice or diagnosis. Always consult a qualified healthcare provider for any concerns regarding mental health.
 
 ## Contributors
 
@@ -16,56 +14,51 @@ Aryan Bhattacharya, Daniel Hoffmaster, Peilun Li, Kyle Liu, Ishaant Majumdar, Jo
 
 ## Tech Stack
 
-* Deployment
-  * ngrok
-* Frontend
+* **Deployment**
+  * AWS EC2
+  * Cloudflare
+* **Frontend**
   * HTML5 + CSS3 + JS
-* Backend
+* **Backend**
   * Flask
   * Mastodon.py
   * PyTorch + Hugging Face transformers
 
 ## Code Specifics
 
-### Backend - Our NLP Models
+### Backend - NLP Models
 
-* for a single social media post (stored in `depression_single_post_model.pt`): a pre-trained BERT ([bert-base-cased](https://huggingface.co/docs/transformers/en/model_doc/bert)) fed into a small MLP and then a sigmoid activation. There are also various optimizations such as L2 regularization and dropout layers. `single_post.py` tokenizes a single post content and then performs inference on the tokens with this model. 
+* **Single Post Depression Detection** (`depression_single_post_model.pt`): Uses a pre-trained BERT model ([bert-base-cased](https://huggingface.co/docs/transformers/en/model_doc/bert)) followed by a small MLP with a sigmoid activation. Optimizations include L2 regularization and dropout layers. `single_post.py` handles tokenization and inference for individual post analysis.
 
-* for multiple social media posts (stored in `depression_model.pt`): a pre-trained BERT model named TinyBert ([bert-tiny](https://huggingface.co/prajjwal1/bert-tiny)) processes each tweet into a size 128 vector.  The output of the BERTs processing each tweet is partitioned into multiple sections. Each of these sections is put through an LSTM where each timestamp takes the vector output of the BERT for one tweet as input. The output is then condensed into a single value through a small neural network. This value is then put through a sigmoid function to get one percentage for the depression value. `multi_post.py` tokenizes each post in a list of posts then performs inference on the tokens with this model. 
+* **Multi-Post Depression Detection** (`depression_model.pt`): Utilizes TinyBERT ([bert-tiny](https://huggingface.co/prajjwal1/bert-tiny)) for vectorizing each post to a 128-dimensional vector. The vectors are processed sequentially by an LSTM layer, and the final output is classified via a neural network and sigmoid activation to generate a depression score. `multi_post.py` handles tokenization and sequential inference across multiple posts.
 
-* `anxiety_model.pt` uses the same architecture as `depression_model.pt`. It also uses `multi_post.py` for inference.
+* **Anxiety Detection** (`anxiety_model.pt`): Follows the same architecture as `depression_model.pt`, trained on anxiety-specific data. It also utilizes `multi_post.py` for analysis of sequential posts.
 
-**Explore the `model` branch** and its associated PR to view our training code for the final models. `model` also contains our parsed datasets and details of various model experiments, including those with different architectures, models, hyperparameters, and optimizations for accuracy and efficiency.
+**For a closer look:** The `model` branch contains our training code, datasets, and documentation of model experiments, detailing variations in architecture, hyperparameters, and optimizations.
 
 ### Backend - Social Media Post Retrieval
 
-We use the [Mastodon.py API](https://mastodonpy.readthedocs.io/en/stable/) in `fetch_mastodon_posts.py` to retrieve users’ past Mastodon posts for our multi-post model to later analyze. We also perform basic input handling as well as parsing of the retrieved mastodon posts (e.g. removing html tags and preserving hashtags).
+* **Mastodon Posts**: We use the [Mastodon.py API](https://mastodonpy.readthedocs.io/en/stable/) in `fetch_mastodon_posts.py` to retrieve user posts. Basic input handling and text parsing (e.g., HTML tag removal, hashtag preservation) are applied.
 
-We also use a Reddit API in `fetch_reddit_posts.py` to retrive Reddit posts by user.
+* **Reddit Posts**: The Reddit API is employed in `fetch_reddit_posts.py` to retrieve posts by user.
 
 ### Frontend
 
-The site features interactive elements and a visually appealing design to enhance user experience.
+The website features a responsive, user-friendly interface designed for an engaging experience.
 
-*References*:
-The project was inspired by and built using concepts from the following resources:
+- **Interactive UI Elements**: Clickable cards and interactive forms.
+- **Modern Design**: Incorporates animations and a clean aesthetic for an appealing look.
+- **Responsive Layout**: Ensures usability across devices and screen sizes.
 
- * Hyperplexed Pen on CodePen (https://codepen.io/Hyperplexed/full/MWQeYLW)
- * Hyperplexed Pen on CodePen pt. 2 (https://codepen.io/Hyperplexed/pen/YzeOLYe)
- * AuthKit (https://www.authkit.com/)
- * Project Features
-
-*Interactive UI Elements*: The website includes interactive elements such as clickable cards that reveal input forms.
-
-*Stylish Design*: Utilizes modern design principles and animations to create a visually appealing interface.
-
-*Responsive Layout*: Ensures a consistent experience across different devices and screen sizes.
+*References*:  
+- Hyperplexed Pen on CodePen: [CodePen 1](https://codepen.io/Hyperplexed/full/MWQeYLW), [CodePen 2](https://codepen.io/Hyperplexed/pen/YzeOLYe)  
+- AuthKit: [AuthKit](https://www.authkit.com/)
 
 ## Running
 
 ### Setup
 
-Write a `.env`:
+Create a `.env` file:
 ```
 MASTODON_EMAIL=XXXXXXXXXXXXXXXXXXXXX
 MASTODON_PASSWORD=XXXXXXXXXXXXXXXXXXXXX
@@ -85,14 +78,4 @@ The local server should automatically update on reload when you make changes to 
 
 ### Web Deployment
 
-Make sure you have ngrok installed: [download page](https://ngrok.com/download)
-
-```bash
-# start gunicorn WSGI local server
-gunicorn -b 127.0.0.1:5000 app:app
-```
-in a new terminal:
-```bash
-# deploy port 5000 to ngrok
-ngrok http 5000
-```
+Our project is hosted on an AWS EC2 instance and is accessible via our Cloudflare domain at [ai-clarity.org](https://ai-clarity.org/).
